@@ -162,10 +162,11 @@ window.DATA = {
       { emoji: "🍌", tag: "#1 movie", title: "Despicable Me", text: "It opened four days before you were born and made $56M that weekend, which makes the Minions basically your age." },
       { emoji: "🎬", tag: "In theaters", title: "Summer 2010", text: "Twilight: Eclipse, Toy Story 3, and Inception, which came out three days after you did. Avatar was still the biggest film ever made." },
       { emoji: "📱", tag: "19 days old", title: "iPhone 4", text: "$199, the first Retina screen, brand new FaceTime. The original iPad was barely three months old." },
-      { emoji: "🚫", tag: "Didn't exist yet", title: "Instagram", text: "It launched three months after you did. No Snapchat, no TikTok, and Uber was a tiny startup called UberCab." },
+      { emoji: "🚫", tag: "Didn't exist yet", title: "Instagram", text: "It launched three months after you did. No Snapchat, no TikTok, no Fortnite." },
       { emoji: "🌐", tag: "Online", title: "Facebook: 500M", text: "About to cross half a billion users, while Justin Bieber's “Baby” became the most viewed video on YouTube." },
       { emoji: "⛏️", tag: "Gaming", title: "Minecraft, $13", text: "Still a rough alpha built by one guy. Angry Birds was the game everyone had on their phone." },
-      { emoji: "📼", tag: "The old world", title: "Blockbuster was open", text: "Netflix mostly mailed you DVDs. And the Old Spice Guy went viral that exact week." }
+      { emoji: "🎮", tag: "Consoles", title: "Xbox 360 & PS3", text: "The consoles to have in 2010, with Kinect motion control arriving that November. The PS5 and Xbox Series X you play now were still ten years away." },
+      { emoji: "📼", tag: "The old world", title: "Blockbuster was open", text: "Netflix mostly mailed you DVDs." }
     ]
   },
 
@@ -213,7 +214,7 @@ window.DATA = {
         { emoji: "🖖", name: "Patrick Stewart", note: "Professor X & Captain Picard" },
         { emoji: "🧽", name: "Tom Kenny", note: "the voice of SpongeBob" },
         { emoji: "🧩", name: "Ernő Rubik", note: "invented the Rubik's Cube" },
-        { emoji: "😂", name: "Ken Jeong", note: "The Hangover" }
+        { emoji: "😂", name: "Ken Jeong", note: "The Hangover (you're a little young for that one, but you'll get it soon)" }
       ]
     }
   },
@@ -246,9 +247,10 @@ window.DATA = {
       "Barça is still Barça.",
       "The Saints are still who dat.",
       "The best summers are still World Cup summers.",
-      { html: "And Morocco is <span class=\"grad\">still climbing.</span>" }
+      { html: "Morocco is <span class=\"grad\">still climbing.</span>" },
+      { html: "And <b>Zain</b> is still growing, still learning, and getting a little wiser with every second that passes." }
     ],
-    message: "Happy 16th, {NICK}. The world's been busy since July 13, 2010, but so have you.",
+    message: "Keep living, keep smiling. Happy birthday, {NICK}!",
     replay: "Replay the rewind",
     cakeHint: "psst, tap the cake",
     eggToast: "🎉 You found the secret. Year 16 wins everything.",

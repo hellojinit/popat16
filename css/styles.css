@@ -665,3 +665,8 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
 .twin-name { color: var(--text-hi); font-weight: 600; }
 .twin-note { color: var(--text-lo); font-size: .85rem; }
 @media (min-width: 700px) { .twins-grid { grid-template-columns: 1fr 1fr; } }
+
+/* ── Numbers tiles: 2010 value highlighted, 2026 secondary ── */
+.tile-big { display: inline-block; font-family: var(--font-display); font-weight: 700; font-size: clamp(1.6rem, 6.5vw, 2.6rem); line-height: 1; font-variant-numeric: tabular-nums; background: linear-gradient(120deg, #FFDE8A, var(--gold-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.tile-sub { color: var(--text-lo); font-size: .84rem; font-variant-numeric: tabular-nums; }
+.tile-year { color: var(--gold); font-weight: 600; }

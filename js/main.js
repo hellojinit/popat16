@@ -147,13 +147,14 @@
   }
 
   function tile(t, i) {
-    var then = t.thenText || fmtVal(t.from, t.fmt);
+    var hasThen = !!t.thenText;
+    var big = t.thenText || fmtVal(t.from, t.fmt);
+    var attrs = hasThen ? "" : ' data-countup data-from="0" data-to="' + t.from + '" data-fmt="' + t.fmt + '"';
     return '<div class="tile" data-reveal style="--i:' + (i % 8) + '">' +
       '<p class="tile-label">' + t.label + '</p>' +
-      '<div class="tile-nums">' +
-        '<span class="tile-then">' + then + '</span><span class="tile-arrow">→</span>' +
-        '<span class="tile-now" data-countup data-from="' + t.from + '" data-to="' + t.to + '" data-fmt="' + t.fmt + '">' + fmtVal(t.to, t.fmt) + '</span>' +
-      '</div>' + (t.note ? '<p class="tile-note">' + t.note + '</p>' : "") + '</div>';
+      '<span class="tile-big"' + attrs + '>' + big + '</span>' +
+      '<p class="tile-sub"><span class="tile-year">in 2010</span> · ' + fmtVal(t.to, t.fmt) + ' today</p>' +
+      (t.note ? '<p class="tile-note">' + t.note + '</p>' : "") + '</div>';
   }
   function renderNumbers() {
     var n = D.numbers;
@@ -260,6 +261,7 @@
 
   renderDay(); renderAlive(); renderWorldcup(); renderBarca(); renderSaints(); renderNumbers();
   renderCulture(); renderClimb(); renderFullcircle(); renderSweet(); renderPhotos(); renderFinale();
+
 
   /* live "alive for..." counters — born July 13, 2010, 7:15:00 pm ET (UTC-4) */
   var birthMs = Date.parse("2010-07-13T19:15:00-04:00");
