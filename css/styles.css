@@ -636,3 +636,32 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
 .alive-label { display: block; margin-top: var(--s3); color: var(--text-lo); font-size: .82rem; letter-spacing: .12em; text-transform: uppercase; }
 .alive-note { text-align: center; color: var(--text-lo); margin-top: var(--s5); font-style: italic; }
 @media (min-width: 720px) { .alive-grid { grid-template-columns: 1fr 1fr; } }
+
+/* ── Highlighted birthday callout (Yamal) ── */
+.coda-hl {
+  --reveal-y: 22px; position: relative; max-width: 560px; margin: var(--s7) auto 0;
+  text-align: center; padding: var(--s6) var(--s5); border-radius: var(--radius);
+  background: linear-gradient(180deg, rgba(255,201,60,.10), var(--surface));
+  border: 1px solid var(--stroke-hi);
+}
+.coda-hl::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1px;
+  background: linear-gradient(120deg, var(--gold), var(--grana), var(--blau));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+          mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude; opacity: .6; pointer-events: none;
+}
+.coda-star { font-size: 1.9rem; display: block; margin-bottom: var(--s3); }
+.coda-hl p { position: relative; color: var(--text-hi); font-size: clamp(1.05rem, 3vw, 1.25rem); line-height: 1.55; }
+.coda-hl b { color: var(--gold); font-weight: 700; }
+
+/* ── Birthday twins ── */
+.twins { max-width: 720px; margin: var(--s6) auto 0; }
+.twins-label { text-align: center; color: var(--text-lo); font-size: .92rem; margin-bottom: var(--s4); }
+.twins-grid { display: grid; gap: var(--s3); grid-template-columns: 1fr; }
+.twin { display: flex; align-items: center; gap: var(--s3); background: var(--surface); border: 1px solid var(--stroke); border-radius: 14px; padding: var(--s3) var(--s4); }
+.twin-emoji { font-size: 1.5rem; line-height: 1; flex: none; }
+.twin-body { display: flex; flex-direction: column; }
+.twin-name { color: var(--text-hi); font-weight: 600; }
+.twin-note { color: var(--text-lo); font-size: .85rem; }
+@media (min-width: 700px) { .twins-grid { grid-template-columns: 1fr 1fr; } }

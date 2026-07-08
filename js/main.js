@@ -97,10 +97,9 @@
   function renderWorldcup() {
     var w = D.worldcup;
     var matches = '<div class="matches">' + matchCard(w.final, 0) + matchCard(w.thirdPlace, 1) + '</div>';
-    var paul = '<div class="paul" data-reveal><span aria-hidden="true">🐙</span><span>' + w.paul + '</span></div>';
     var u = w.usa;
     var usa = '<div class="usa-note" data-reveal><p class="eyebrow">' + u.label + '</p><p>' + u.text + '</p></div>' + videoEmbed(u.video);
-    set("worldcup", head("worldcup", w, matches + paul + videoEmbed(w.video) + usa) + "</div>");
+    set("worldcup", head("worldcup", w, matches + videoEmbed(w.video) + usa) + "</div>");
   }
 
   function renderSaints() {
@@ -202,9 +201,14 @@
         '<div class="fx-team"><span class="fx-flag">' + flagSVG(m.home) + '</span><span class="fx-name">' + m.home + '</span></div>' +
         '<span class="fx-vs">' + (q.played ? "FT" : "vs") + '</span>' +
         '<div class="fx-team"><span class="fx-flag">' + flagSVG(m.away) + '</span><span class="fx-name">' + m.away + '</span></div>' +
-      '</div>' + body + '</article>' +
-      '<p class="coda" data-reveal>' + f.coda + '</p>';
-    set("fullcircle", head("fullcircle", f, runStrip + fixture) + "</div>");
+      '</div>' + body + '</article>';
+    var coda = '<div class="coda-hl" data-reveal><span class="coda-star" aria-hidden="true">🎂</span><p>' + f.coda + '</p></div>';
+    var twins = f.twins ? '<div class="twins" data-reveal><p class="twins-label">' + f.twins.label + '</p><div class="twins-grid">' +
+      f.twins.people.map(function (p) {
+        return '<div class="twin"><span class="twin-emoji" aria-hidden="true">' + p.emoji + '</span>' +
+          '<span class="twin-body"><span class="twin-name">' + p.name + '</span><span class="twin-note">' + p.note + '</span></span></div>';
+      }).join("") + '</div></div>' : "";
+    set("fullcircle", head("fullcircle", f, runStrip + fixture + coda + twins) + "</div>");
   }
 
   function renderFinale() {

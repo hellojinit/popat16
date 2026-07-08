@@ -31,7 +31,7 @@ window.DATA = {
   hero: {
     kicker: "July 13, 2026 · you're 16",
     headline: "Happy 16th, {NAME}.",
-    sub: "This is the world on the day you showed up. Tuesday, July 13, 2010.",
+    sub: "Here are some fun facts, and a look at how the world was the day you were born. Tuesday, July 13, 2010.",
     play: "▶  Play the story"
   },
 
@@ -75,7 +75,6 @@ window.DATA = {
       scorers: ["Müller 19'", "Cavani 28'", "Forlán 51'", "Jansen 56'", "Khedira 82'"],
       kicker: "With the very last kick of the game, Forlán's free kick hit the crossbar. Inches from extra time."
     },
-    paul: "And a German octopus named Paul, who somehow went 8 for 8 that summer, had called every single result.",
     video: { id: "3pCPQDxZzfY", title: "Iniesta's World Cup-winning goal", caption: "The goal that won it all, the week you were born." },
     usa: {
       label: "🇺🇸 And your country had its moment",
@@ -141,16 +140,14 @@ window.DATA = {
   numbers: {
     kicker: "By the numbers",
     title: "2010 → 2026.",
-    lead: "The year you were born, Barack Obama was president, a gallon of gas cost $2.72, and there were 308,745,538 people in the country. Here's how much has changed while you've been around.",
     tiles: [
       { label: "World population", from: 6900000000, to: 8300000000, fmt: "compact" },
       { label: "U.S. population",  from: 308745538, to: 342600000, fmt: "compact" },
       { label: "Virginia",         from: 8001024,   to: 8900000,   fmt: "compact" },
-      { label: "Lorton, VA",       from: 18610,     to: 21000,     fmt: "compact", note: "your hometown" },
+      { label: "Lorton, VA",       from: 18610,     to: 21000,     fmt: "compact" },
       { label: "Gallon of gas",    from: 2.72,  to: 3.80,  fmt: "usd" },
       { label: "Movie ticket",     from: 7.89,  to: 11.50, fmt: "usd" },
       { label: "A Big Mac",        from: 3.73,  to: 5.85,  fmt: "usd" },
-      { label: "A new car (avg.)", from: 29000, to: 50000, fmt: "usd0" },
       { label: "A new home (avg.)",from: 217000, to: 425000, fmt: "usd0" },
       { label: "One Bitcoin",      from: 0.01,  to: 63000, fmt: "usd0", thenText: "≈ 1¢", note: "$100 of it that week could be worth $126M to $790M today." }
     ]
@@ -208,7 +205,17 @@ window.DATA = {
       upcoming: "If they win, Morocco play a World Cup semifinal on July 14, the day after you turn 16.",
       tag: "A rematch of the 2022 semifinal, and this time the whole world is watching."
     },
-    coda: "And here's the strangest part of all. Spain's teenage superstar, Barça's own <b>Lamine Yamal</b>, was born on July 13, 2007. The exact same day as you, three years earlier. When you turn 16, he turns 19. You share a birthday with the future of your favourite club."
+    coda: "You share your birthday with Barcelona's teen superstar. <b>Lamine Yamal</b> was born on July 13, 2007, the exact same day as you, just three years earlier. When you turn 16, he turns 19.",
+    twins: {
+      label: "And you're in good company. A few other July 13 birthdays:",
+      people: [
+        { emoji: "🎬", name: "Harrison Ford", note: "Han Solo & Indiana Jones" },
+        { emoji: "🖖", name: "Patrick Stewart", note: "Professor X & Captain Picard" },
+        { emoji: "🧽", name: "Tom Kenny", note: "the voice of SpongeBob" },
+        { emoji: "🧩", name: "Ernő Rubik", note: "invented the Rubik's Cube" },
+        { emoji: "😂", name: "Ken Jeong", note: "The Hangover" }
+      ]
+    }
   },
 
   sweet: {
@@ -244,7 +251,7 @@ window.DATA = {
     message: "Happy 16th, {NICK}. The world's been busy since July 13, 2010, but so have you.",
     replay: "Replay the rewind",
     cakeHint: "psst, tap the cake",
-    eggToast: "🐙 Paul the Octopus has spoken: year 16 wins everything.",
+    eggToast: "🎉 You found the secret. Year 16 wins everything.",
     footer: "Made with love for your 16th. 🎂⚽⚜️"
   }
 };
