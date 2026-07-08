@@ -3,16 +3,13 @@
 A one-page "time machine to July 13, 2010" birthday site. Pure static HTML/CSS/JS —
 no build step. Just upload the folder.
 
-## Before you launch — two quick edits (both in `js/data.js`)
+His name (**Zain**, a.k.a. **Popat**) and all the facts — born Arlington VA at 7:15pm,
+hometown Lorton, the Saints' Super Bowl, Barça's league table — are already set.
 
-1. **His name.** Near the top:
-   ```js
-   name: "{NAME}",   // ← change to his name, e.g. "Adam"
-   ```
-   It fills in "Happy 16th, ___" and the closing message automatically.
+## Before you launch (all in `js/data.js`)
 
-2. **The France vs Morocco result** (quarterfinal, Thu **July 9**, 4pm ET).
-   Find the `moroccoQF` block and, after the match, set:
+1. **The France vs Morocco result** — the one game-day edit (quarterfinal, Thu **July 9**,
+   4pm ET). Find the `moroccoQF` block and, after the match, set:
    ```js
    moroccoQF: {
      played: true,
@@ -23,7 +20,23 @@ no build step. Just upload the folder.
    Pre-written win / loss / penalty lines are in the comment right above that block —
    just copy the one that fits. (If you skip this, it simply shows the upcoming fixture.)
 
-Re-upload after editing (same steps below) — takes ~1 minute.
+2. **Check the 4 videos** (optional). Each moment — Iniesta's goal, the Saints' Super Bowl,
+   California Gurls, Morocco vs Portugal — shows a real thumbnail with a play button and
+   plays inline when tapped. If any clip won't play (some official uploads block embedding),
+   swap its `video: { id: "..." }` in `js/data.js` for another YouTube video ID and re-upload.
+
+3. **Add "then & now" photos** (optional). In the `photos` block, point `then.src` / `now.src`
+   at two image files (e.g. `"photos/baby.jpg"` — create a `photos/` folder next to
+   `index.html`). The photo section appears automatically once at least one is set; leave both
+   blank and it stays hidden.
+
+Re-upload after any edit (same steps below) — takes ~1 minute.
+
+## What's on the page
+Hero year-rewind + a **▶ Play the story** button that auto-scrolls the whole thing like a
+video · the day you arrived (Arlington, 7:15pm) · the 2010 World Cup + Iniesta clip · your
+2010–11 Barça XI and league table · the Saints' Super Bowl · 2010-vs-2026 numbers · pop
+culture + the #1 song · Morocco's rise + the 2022 clip · the full-circle 2026 finale · confetti.
 
 ## Preview locally first (optional)
 

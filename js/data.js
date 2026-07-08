@@ -1,7 +1,8 @@
 /* ============================================================
-   DATA — all copy & facts live here. Edit this one file.
-   {NAME} is replaced everywhere with `name` below.
-   Born: Tuesday, July 13, 2010 · Alexandria, Virginia
+   DATA — all copy, facts & media live here. Edit this one file.
+   {NAME} → name, {NICK} → nickname (used in copy).
+   Born: Tuesday, July 13, 2010, 7:15 pm · Arlington, VA
+   Hometown: Lorton, VA
    ============================================================ */
 window.DATA = {
 
@@ -30,24 +31,25 @@ window.DATA = {
   hero: {
     kicker: "July 13, 2026 · you're 16",
     headline: "Happy 16th, {NAME}.",
-    sub: "This is the world on the day you arrived — Tuesday, July 13, 2010."
+    sub: "This is the world on the day you arrived — Tuesday, July 13, 2010.",
+    play: "▶  Play the story"
   },
 
   day: {
     kicker: "The day you arrived",
     title: "Tuesday, July 13, 2010.",
-    lead: "Alexandria, Virginia. A hot, sticky summer Tuesday — and the start of everything.",
+    lead: "Arlington, Virginia — 7:15 in the evening, the summer sun still up. A warm, humid Tuesday, and the start of everything.",
     weather: {
-      high: 86, low: 74,
-      meta: [["Feels like", "93°F"], ["Humidity", "80%"], ["Skies", "hazy, light drizzle"]],
-      story: "The week before, D.C. had hit 102°F — twice — in a record heat wave. By the 13th the worst had passed, leaving a warm, humid day with a passing drizzle.",
-      forecast: "Sixteen years later, your birthday looks almost identical: about 85°F, humid, a little drizzle. Some things really don't change."
+      high: 86, low: 73,
+      meta: [["At 7:15 pm", "85°F"], ["Feels like", "92°F"], ["Sunset", "8:34 pm"]],
+      story: "Days earlier, Reagan National — right there in Arlington — had hit 102°F, twice, in a record heat wave. By the 13th the worst had passed, leaving a warm, partly-cloudy evening for you to show up to.",
+      forecast: "Sixteen years later, your birthday looks almost identical: about 85°F, humid, a little haze. Some things really don't change."
     },
     chips: [
+      { emoji: "🌇", title: "7:15 in the evening", text: "You arrived about an hour and a half before sunset — the sky over Northern Virginia still gold." },
       { emoji: "⚾", title: "On your actual birthday", text: "The 2010 MLB All-Star Game was played in Anaheim. The National League won 3–1 — their first All-Star win in 14 years." },
       { emoji: "🛰️", title: "Three days before", text: "Europe's Rosetta spacecraft flew past asteroid 21 Lutetia — 280 million miles from home — and sent back the closest photos anyone had ever seen." },
-      { emoji: "🕵️", title: "That week", text: "The U.S. and Russia swapped 14 spies on a Vienna runway — the biggest exchange since the Cold War. And LeBron took his talents to South Beach on live TV." },
-      { emoji: "🏛️", title: "In charge back then", text: "Barack Obama was president (age 48). Bob McDonnell ran Virginia. Bill Euille was the mayor of Alexandria." }
+      { emoji: "🕵️", title: "That week", text: "The U.S. and Russia swapped 14 spies on a Vienna runway — the biggest exchange since the Cold War. And LeBron took his talents to South Beach on live TV." }
     ]
   },
 
@@ -66,13 +68,14 @@ window.DATA = {
       scorers: ["Müller 19'", "Cavani 28'", "Forlán 51'", "Jansen 56'", "Khedira 82'"],
       kicker: "With the very last kick of the game, Forlán's free kick hit the crossbar. Inches from extra time."
     },
-    paul: "And a German octopus named Paul — 8 for 8 that summer — had predicted every bit of it."
+    paul: "And a German octopus named Paul — 8 for 8 that summer — had predicted every bit of it.",
+    video: { id: "3pCPQDxZzfY", title: "Iniesta's World Cup-winning goal", caption: "The goal that won it — the week you were born." }
   },
 
   barca: {
     kicker: "Your Barça, summer 2010",
     title: "The greatest team on Earth.",
-    lead: "The week you were born, this was the best football team in the world — reigning Spanish champions with a record-shattering 99 points, coached by Pep Guardiola.",
+    lead: "The week you were born, this was the best football team in the world — reigning Spanish champions, coached by Pep Guardiola.",
     formationLabel: "2010–11 · 4-3-3",
     players: [
       { n: 1,  name: "Valdés",   x: 34, y: 96 },
@@ -87,6 +90,15 @@ window.DATA = {
       { n: 10, name: "Messi",    x: 34, y: 22, star: true },
       { n: 17, name: "Pedro",    x: 57, y: 28 }
     ],
+    standings: {
+      label: "La Liga 2009–10 · final table",
+      rows: [
+        { pos: 1, team: "Barcelona",   pts: 99, champ: true },
+        { pos: 2, team: "Real Madrid",  pts: 96 },
+        { pos: 3, team: "Valencia",     pts: 71 }
+      ],
+      note: "First place. Champions of Spain with a record 99 points — three clear of Real Madrid. The next season they'd win the league again and lift the Champions League at Wembley."
+    },
     facts: [
       { mark: "10", html: "That <b>#10</b> was 23 years old, with exactly <b>one</b> Ballon d'Or. He has <b>eight</b> now — nobody else has more than five." },
       { mark: "€40M", html: "David Villa had just signed for <b>€40 million</b> — arriving days after you, in time to win everything." },
@@ -95,14 +107,32 @@ window.DATA = {
     ]
   },
 
+  saints: {
+    kicker: "Who Dat!",
+    title: "Your Saints ruled the world.",
+    lead: "Five months before you were born, New Orleans won the first Super Bowl in the franchise's history — a city still rebuilding after Katrina, dancing in the streets again.",
+    game: {
+      label: "Super Bowl XLIV · Feb 7, 2010 · Miami",
+      home: "Saints", away: "Colts", score: "31–17", icon: "🏈",
+      scorers: ["Brees — Super Bowl MVP", "Payton's onside kick", "Porter 74-yd pick-six"],
+      kicker: "The underdogs beat Peyton Manning's Colts. So for the entire year you were born, the Saints were the champions of the NFL."
+    },
+    facts: [
+      { mark: "9", html: "<b>Drew Brees</b> tied a Super Bowl record with 32 completions and was named MVP." },
+      { mark: "⚡", html: "Coach <b>Sean Payton</b> opened the second half with the famous surprise onside kick — “Ambush.”" },
+      { mark: "74", html: "<b>Tracy Porter</b> jumped Manning's pass and took it 74 yards to the house to seal it." }
+    ],
+    video: { id: "P0zuCOfcSjc", title: "Super Bowl XLIV highlights", caption: "Saints 31–17 Colts — the whole ride, in a few minutes." }
+  },
+
   numbers: {
     kicker: "By the numbers",
     title: "2010 → 2026.",
-    lead: "The year you were born, the United States counted 308,745,538 people at the census. In sixteen years, almost everything got bigger — except one thing.",
+    lead: "The year you were born, Barack Obama was president, a gallon of gas was $2.72, and the United States counted 308,745,538 people. In sixteen years, almost everything got bigger — except one thing.",
     tiles: [
       { label: "U.S. population",   from: 308745538, to: 342600000, fmt: "compact" },
       { label: "Virginia",          from: 8001024,   to: 8900000,   fmt: "compact" },
-      { label: "Alexandria, VA",    from: 139966,    to: 157000,    fmt: "compact", note: "your hometown" },
+      { label: "Lorton, VA",        from: 18610,     to: 21000,     fmt: "compact", note: "your hometown" },
       { label: "Gallon of gas",     from: 2.72,  to: 3.80,  fmt: "usd" },
       { label: "Movie ticket",      from: 7.89,  to: 11.50, fmt: "usd" },
       { label: "A Big Mac",         from: 3.73,  to: 5.85,  fmt: "usd" },
@@ -122,6 +152,7 @@ window.DATA = {
     kicker: "The week you were born",
     title: "A different planet.",
     lead: "No Instagram. No TikTok. No Snapchat. Here's what the summer of 2010 actually sounded and looked like.",
+    video: { id: "F57P9C4SAW4", title: "Katy Perry — California Gurls", caption: "The #1 song the week you were born. Press play." },
     cards: [
       { emoji: "🎤", tag: "#1 song", title: "California Gurls", text: "Katy Perry ft. Snoop Dogg — sitting at #1, with Eminem & Rihanna's “Love the Way You Lie” climbing right behind it." },
       { emoji: "🍌", tag: "#1 movie", title: "Despicable Me", text: "Opened four days before you were born — a $56M weekend. Which makes the Minions basically your age." },
@@ -146,7 +177,8 @@ window.DATA = {
       { year: "2022", title: "The mountain", text: "Morocco became the <b>first African and Arab team ever</b> to reach a World Cup semifinal. They beat Belgium. They knocked out Spain on penalties. They beat Portugal. Fourth in the world." },
       { year: "2025", title: "Kings of Africa", text: "Champions of the Africa Cup of Nations — on home soil, in front of their own people." },
       { year: "Today", title: "Top ten on Earth", text: "16 years after rock bottom, Morocco sits <b>7th in the world</b>. And that little kid Ounahi? He just scored twice in a World Cup knockout." }
-    ]
+    ],
+    video: { id: "op4mGRTAlEY", title: "Morocco 1–0 Portugal, 2022", caption: "The night Morocco made history — into the World Cup semifinals." }
   },
 
   fullcircle: {
@@ -172,11 +204,22 @@ window.DATA = {
     coda: "And here's the strangest part of all. Spain's teenage superstar — Barça's own <b>Lamine Yamal</b> — was born on July 13, 2007. The exact same day as you, three years earlier. When you turn 16, he turns 19. You share your birthday with the future of your favourite club."
   },
 
+  /* OPTIONAL — a "then & now" photo pair. Add two image files to a
+     photos/ folder and set the paths below; the section appears only
+     once at least one src is filled in. Leave both blank to hide it. */
+  photos: {
+    kicker: "Then & now",
+    title: "Look how far you've come.",
+    then: { year: "2010", caption: "Day one — Arlington, VA", src: "" },
+    now:  { year: "2026", caption: "Sixteen and unstoppable",  src: "" }
+  },
+
   finale: {
     kicker: "Some things never change",
     constants: [
       "Messi is still playing.",
       "Barça is still Barça.",
+      "The Saints are still who dat.",
       "The best summers are still World Cup summers.",
       { html: "And Morocco is <span class=\"grad\">still climbing.</span>" }
     ],
@@ -184,6 +227,6 @@ window.DATA = {
     replay: "Replay the rewind",
     cakeHint: "psst — tap the cake",
     eggToast: "🐙 Paul the Octopus has spoken: year 16 wins everything.",
-    footer: "Made with love for your 16th. 🎂⚽"
+    footer: "Made with love for your 16th. 🎂⚽⚜️"
   }
 };

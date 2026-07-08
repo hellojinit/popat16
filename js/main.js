@@ -68,16 +68,28 @@
     set("day", head("day", d, weather + chips) + "</div>");
   }
 
+  function videoEmbed(v) {
+    if (!v || !v.id) return "";
+    return '<figure class="video" data-reveal>' +
+      '<div class="video-frame">' +
+        '<button class="lite-yt" type="button" data-ytid="' + v.id + '" aria-label="Play video: ' + v.title + '" ' +
+        'style="background-image:url(https://i.ytimg.com/vi/' + v.id + '/hqdefault.jpg)">' +
+        '<span class="yt-play" aria-hidden="true"></span></button>' +
+      '</div>' +
+      (v.caption ? '<figcaption class="video-cap"><span aria-hidden="true">▶</span> ' + v.caption + '</figcaption>' : "") +
+      '</figure>';
+  }
   function matchCard(m, i) {
     var scorers = m.scorers || (m.detail ? [m.detail] : []);
-    return '<article class="card card--accent match" data-reveal style="--i:' + i + '">' +
+    var ic = m.icon || "⚽";
+    return '<article class="card card--accent match" data-reveal data-rv="' + (i % 2 ? "r" : "l") + '" style="--i:' + i + '">' +
       '<p class="eyebrow match-label">' + m.label + '</p>' +
       '<div class="score-row">' +
         '<span class="score-team home">' + m.home + '</span>' +
         '<span class="score-box">' + m.score + '</span>' +
         '<span class="score-team away">' + m.away + '</span>' +
       '</div>' +
-      (scorers.length ? '<div class="scorers">' + scorers.map(function (s) { return "<span>" + s + "</span>"; }).join("") + '</div>' : "") +
+      (scorers.length ? '<div class="scorers">' + scorers.map(function (s) { return '<span><i aria-hidden="true">' + ic + '</i>' + s + '</span>'; }).join("") + '</div>' : "") +
       (m.venue ? '<p class="eyebrow" style="margin-top:12px">' + m.venue + '</p>' : "") +
       '<p class="match-kicker">' + m.kicker + '</p></article>';
   }
@@ -85,7 +97,16 @@
     var w = D.worldcup;
     var matches = '<div class="matches">' + matchCard(w.final, 0) + matchCard(w.thirdPlace, 1) + '</div>';
     var paul = '<div class="paul" data-reveal><span aria-hidden="true">🐙</span><span>' + w.paul + '</span></div>';
-    set("worldcup", head("worldcup", w, matches + paul) + "</div>");
+    set("worldcup", head("worldcup", w, matches + paul + videoEmbed(w.video)) + "</div>");
+  }
+
+  function renderSaints() {
+    var s = D.saints;
+    var card = '<div class="matches matches--one">' + matchCard(s.game, 0) + '</div>';
+    var facts = '<div class="fact-list">' + s.facts.map(function (f, i) {
+      return '<div class="fact" data-reveal style="--i:' + i + '"><span class="fact-mark">' + f.mark + '</span><p>' + f.html + '</p></div>';
+    }).join("") + '</div>';
+    set("saints", head("saints", s, card + facts + videoEmbed(s.video)) + "</div>");
   }
 
   function renderBarca() {
@@ -118,7 +139,17 @@
     var facts = '<div class="fact-list">' + b.facts.map(function (f, i) {
       return '<div class="fact" data-reveal style="--i:' + i + '"><span class="fact-mark">' + f.mark + '</span><p>' + f.html + '</p></div>';
     }).join("") + '</div>';
-    set("barca", head("barca", b, '<div class="pitch-wrap">' + figure + facts + '</div>') + "</div>");
+    var st = b.standings;
+    var standings = '<div class="standings" data-reveal>' +
+      '<p class="eyebrow standings-label">' + st.label + '</p>' +
+      '<table class="standings-table"><tbody>' +
+      st.rows.map(function (r) {
+        return '<tr class="' + (r.champ ? "champ" : "") + '"><td class="pos">' + r.pos + '</td>' +
+          '<td class="team">' + r.team + (r.champ ? ' <span class="badge">🏆 Champions</span>' : "") + '</td>' +
+          '<td class="pts">' + r.pts + '<span class="pts-u">pts</span></td></tr>';
+      }).join("") + '</tbody></table>' +
+      '<p class="standings-note">' + st.note + '</p></div>';
+    set("barca", head("barca", b, '<div class="pitch-wrap">' + figure + facts + '</div>' + standings) + "</div>");
   }
 
   function tile(t, i) {
@@ -150,7 +181,7 @@
         '<p class="pop-tag">' + k.tag + '</p><p class="pop-title">' + k.title + '</p>' +
         '<p class="pop-text">' + k.text + '</p></article>';
     }).join("") + '</div>';
-    set("culture", head("culture", c, cards) + "</div>");
+    set("culture", head("culture", c, videoEmbed(c.video) + cards) + "</div>");
   }
 
   function renderClimb() {
@@ -163,7 +194,7 @@
       return '<div class="step" data-reveal style="--i:' + i + '"><p class="step-year">' + s.year + '</p>' +
         '<p class="step-title">' + s.title + '</p><p class="step-text">' + s.text + '</p></div>';
     }).join("") + '</div>';
-    set("climb", head("climb", c, rankHero + timeline) + "</div>");
+    set("climb", head("climb", c, rankHero + timeline + videoEmbed(c.video)) + "</div>");
   }
 
   function renderFullcircle() {
@@ -203,14 +234,78 @@
     set("finale", '<div class="container">' + inner + '</div>');
   }
 
-  renderDay(); renderWorldcup(); renderBarca(); renderNumbers();
-  renderCulture(); renderClimb(); renderFullcircle(); renderFinale();
+  function renderPhotos() {
+    var p = D.photos, host = el("photos");
+    if (!p || (!p.then.src && !p.now.src)) { if (host) host.remove(); return; }
+    function frame(f) {
+      return '<figure class="photo" data-reveal><div class="photo-in">' +
+        (f.src ? '<img src="' + f.src + '" alt="' + f.caption + '" loading="lazy">' : '<div class="photo-empty">add a photo</div>') +
+        '<span class="photo-year">' + f.year + '</span></div>' +
+        '<figcaption>' + f.caption + '</figcaption></figure>';
+    }
+    set("photos", head("photos", p, '<div class="photos-wrap">' + frame(p.then) + frame(p.now) + '</div>') + "</div>");
+  }
+
+  renderDay(); renderWorldcup(); renderBarca(); renderSaints(); renderNumbers();
+  renderCulture(); renderClimb(); renderFullcircle(); renderPhotos(); renderFinale();
 
   /* hero name + kicker from data */
   var hn = el("hero-name"); if (hn) hn.textContent = D.name;
   var hk = document.querySelector(".hero-kicker"); if (hk) hk.textContent = D.hero.kicker;
   var ak = document.querySelector(".hero-akaid");
   if (ak) { if (D.nickname) ak.textContent = "a.k.a. " + D.nickname + " 🦜"; else ak.remove(); }
+
+  /* ambient hero particles (decorative, motion only) */
+  var hp = document.querySelector(".hero-particles");
+  if (hp && motionOK) {
+    var frag = "";
+    for (var pi = 0; pi < 16; pi++) {
+      var d = 2 + Math.round(Math.random() * 4);
+      frag += '<span style="left:' + Math.round(Math.random() * 100) + '%;width:' + d + 'px;height:' + d + 'px;' +
+        'animation-duration:' + (9 + Math.round(Math.random() * 10)) + 's;animation-delay:' + (-Math.round(Math.random() * 12)) + 's;' +
+        '--o:' + (0.15 + Math.random() * 0.35).toFixed(2) + '"></span>';
+    }
+    hp.innerHTML = frag;
+  }
+
+  /* "Play the story" — cinematic auto-scroll through the whole page */
+  var playBtn = el("play-story"), playing = false, playRAF = null, playLast = 0;
+  if (playBtn && !motionOK) playBtn.style.display = "none";
+  function stopPlay() {
+    if (!playing) return;
+    playing = false;
+    if (playRAF) cancelAnimationFrame(playRAF);
+    document.documentElement.style.scrollBehavior = "";
+    if (playBtn) playBtn.textContent = "▶  Play the story";
+  }
+  function startPlay() {
+    if (!motionOK) return;
+    playing = true;
+    if (playBtn) playBtn.textContent = "⏸  Pause";
+    document.documentElement.style.scrollBehavior = "auto";
+    playLast = 0;
+    function step(now) {
+      if (!playing) return;
+      if (!playLast) playLast = now;
+      var dt = Math.min(now - playLast, 48); playLast = now;
+      window.scrollBy(0, 0.34 * dt);
+      if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2) { stopPlay(); return; }
+      playRAF = requestAnimationFrame(step);
+    }
+    playRAF = requestAnimationFrame(step);
+  }
+  if (playBtn) {
+    playBtn.addEventListener("click", function () {
+      if (playing) { stopPlay(); return; }
+      window.scrollTo({ top: 0, behavior: "auto" });
+      setTimeout(startPlay, 350);
+    });
+  }
+  ["wheel", "touchstart", "pointerdown", "keydown"].forEach(function (evn) {
+    window.addEventListener(evn, function (e) {
+      if (playing && !(e.target && e.target.closest && e.target.closest("#play-story"))) stopPlay();
+    }, { passive: true });
+  });
 
   /* ============================================================
      MOTION
@@ -343,6 +438,11 @@
 
   /* replay + cake easter egg */
   document.addEventListener("click", function (ev) {
+    var lt = ev.target.closest ? ev.target.closest(".lite-yt") : null;
+    if (lt) {
+      lt.parentNode.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + lt.dataset.ytid + '?autoplay=1&rel=0&modestbranding=1" title="YouTube video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
+      return;
+    }
     var t = ev.target.closest ? ev.target.closest("#replay, #cake") : null;
     if (!t) return;
     if (t.id === "replay") {
