@@ -73,7 +73,7 @@ window.DATA = {
     usa: {
       label: "🇺🇸 And your country had its moment",
       text: "Three weeks before you were born, <b>Landon Donovan</b> scored in the 91st minute against Algeria — the most famous goal in U.S. soccer history. It won the group (ahead of England!) and sent the USA into the last 16. A whole country lost its mind.",
-      video: { id: "b7eZmKWW9s4", title: "Donovan's 91st-minute winner vs Algeria", caption: "“Go, go, USA!” — three weeks before you were born." }
+      video: { id: "dd-jAOtj5Xw", start: 150, title: "Donovan's 91st-minute winner vs Algeria", caption: "“Go, go, USA!” — three weeks before you were born." }
     }
   },
 

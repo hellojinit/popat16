@@ -70,11 +70,12 @@
 
   function videoEmbed(v) {
     if (!v || !v.id) return "";
+    var href = "https://www.youtube.com/watch?v=" + v.id + (v.start ? "&t=" + v.start : "");
     return '<figure class="video" data-reveal>' +
       '<div class="video-frame">' +
-        '<button class="lite-yt" type="button" data-ytid="' + v.id + '" aria-label="Play video: ' + v.title + '" ' +
+        '<a class="lite-yt" href="' + href + '" target="_blank" rel="noopener noreferrer" aria-label="Watch on YouTube: ' + v.title + '" ' +
         'style="background-image:url(https://i.ytimg.com/vi/' + v.id + '/hqdefault.jpg)">' +
-        '<span class="yt-play" aria-hidden="true"></span></button>' +
+        '<span class="yt-play" aria-hidden="true"></span></a>' +
       '</div>' +
       (v.caption ? '<figcaption class="video-cap"><span aria-hidden="true">▶</span> ' + v.caption + '</figcaption>' : "") +
       '</figure>';
@@ -458,11 +459,6 @@
 
   /* replay + cake easter egg */
   document.addEventListener("click", function (ev) {
-    var lt = ev.target.closest ? ev.target.closest(".lite-yt") : null;
-    if (lt) {
-      lt.parentNode.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + lt.dataset.ytid + '?autoplay=1&rel=0&modestbranding=1" title="YouTube video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
-      return;
-    }
     var t = ev.target.closest ? ev.target.closest("#replay, #cake") : null;
     if (!t) return;
     if (t.id === "replay") {
