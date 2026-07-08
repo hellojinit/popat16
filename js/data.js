@@ -5,9 +5,10 @@
    ============================================================ */
 window.DATA = {
 
-  /* ▼▼ EDIT THIS: your brother's name (or nickname) ▼▼ */
-  name: "{NAME}",
-  /* ▲▲ appears in "Happy 16th, ___" and the finale ▲▲ */
+  /* ▼▼ his name + the nickname the family uses ▼▼ */
+  name: "Zain",
+  nickname: "Popat",
+  /* ▲▲ name → the big hero line; nickname → the "a.k.a." tag + closing line ▲▲ */
 
   /* ══════════════════════════════════════════════════════════
      THE ONE THING TO UPDATE — France vs Morocco quarterfinal
@@ -179,7 +180,7 @@ window.DATA = {
       "The best summers are still World Cup summers.",
       { html: "And Morocco is <span class=\"grad\">still climbing.</span>" }
     ],
-    message: "Happy 16th, {NAME}. The world's been busy since July 13, 2010 — but so have you.",
+    message: "Happy 16th, {NICK}. The world's been busy since July 13, 2010 — but so have you.",
     replay: "Replay the rewind",
     cakeHint: "psst — tap the cake",
     eggToast: "🐙 Paul the Octopus has spoken: year 16 wins everything.",

@@ -419,6 +419,7 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
 .odo-year b { display: inline-flex; justify-content: center; width: .62em; font-weight: inherit; }
 .hero-title { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.8rem, 6vw, 3rem); color: var(--text-hi); letter-spacing: -.01em; }
 .hero-title #hero-name { color: var(--gold); }
+.hero-akaid { font-family: var(--font-display); font-weight: 500; font-size: .95rem; letter-spacing: .06em; color: var(--gold); opacity: .82; margin-top: calc(var(--s2) * -1); }
 .hero-sub { color: var(--text-lo); max-width: 34ch; }
 .scroll-cue { width: 24px; height: 38px; border: 2px solid var(--stroke-hi); border-radius: 14px; display: flex; justify-content: center; padding-top: 7px; margin-top: var(--s5); }
 .scroll-cue-dot { width: 4px; height: 8px; border-radius: 2px; background: var(--text-lo); }

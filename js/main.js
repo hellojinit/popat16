@@ -11,7 +11,7 @@
   if (motionOK) document.documentElement.classList.add("motion-ok");
 
   /* ---------- helpers ---------- */
-  function nameify(s) { return String(s).split("{NAME}").join(D.name); }
+  function nameify(s) { return String(s).split("{NAME}").join(D.name).split("{NICK}").join(D.nickname || D.name); }
   function el(id) { return document.getElementById(id); }
   function set(id, html) { var n = el(id); if (n) n.innerHTML = nameify(html); }
   function head(id, o, extra) {
@@ -209,6 +209,8 @@
   /* hero name + kicker from data */
   var hn = el("hero-name"); if (hn) hn.textContent = D.name;
   var hk = document.querySelector(".hero-kicker"); if (hk) hk.textContent = D.hero.kicker;
+  var ak = document.querySelector(".hero-akaid");
+  if (ak) { if (D.nickname) ak.textContent = "a.k.a. " + D.nickname + " 🦜"; else ak.remove(); }
 
   /* ============================================================
      MOTION
