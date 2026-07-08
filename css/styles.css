@@ -594,3 +594,45 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
 .sweet-card { border-color: var(--stroke-hi); }
 .sweet-card .pop-tag { color: var(--accent); margin-bottom: 2px; }
 @media (min-width: 800px) { .sweet-grid { grid-template-columns: repeat(3, 1fr); } }
+
+/* ── Barça lineup board (TV style) ── */
+.pitch-fig { margin: 0; }
+.pitch-board {
+  position: relative; width: 100%; max-width: 420px; margin-inline: auto;
+  aspect-ratio: 68 / 105;
+  background: linear-gradient(180deg, #0d2417, #0a1a12);
+  border: 1px solid var(--stroke); border-radius: 18px; overflow: hidden;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.05);
+}
+.pitch-field { position: absolute; inset: 0; width: 100%; height: 100%; }
+.pitch-field .fl { fill: none; stroke: rgba(255,255,255,.15); stroke-width: .5; }
+.pitch-field .fl-dot { fill: rgba(255,255,255,.25); stroke: none; }
+.pl { position: absolute; transform: translate(-50%, -50%); width: 12.5%; display: flex; flex-direction: column; align-items: center; z-index: 1; }
+.pl-badge {
+  width: 100%; aspect-ratio: 1; border-radius: 50%;
+  background: repeating-linear-gradient(90deg, #1b4dd6 0 25%, #b31b46 25% 50%);
+  border: 2px solid rgba(255,255,255,.9); display: grid; place-items: center;
+  box-shadow: 0 3px 9px rgba(0,0,0,.55);
+}
+.pl-num { font-family: var(--font-display); font-weight: 700; color: #fff; font-size: clamp(.72rem, 3.3vw, 1.05rem); line-height: 1; text-shadow: 0 1px 2px rgba(0,0,0,.5); }
+.pl-name {
+  margin-top: 4px; font-family: var(--font-body); font-weight: 600; color: var(--text-hi);
+  font-size: clamp(.6rem, 2.5vw, .74rem); white-space: nowrap;
+  background: rgba(7,10,18,.75); border-radius: 6px; padding: 1px 7px;
+}
+.pl-star .pl-badge { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(255,201,60,.4), 0 3px 9px rgba(0,0,0,.55); }
+.pl-star .pl-name { color: var(--gold); }
+.motion-ok .pitch-board { opacity: 0; transform: translateY(20px); transition: opacity .6s var(--ease-out), transform .6s var(--ease-out); }
+.motion-ok .pitch-board.in { opacity: 1; transform: none; }
+.motion-ok .pitch-board .pl { opacity: 0; }
+.motion-ok .pitch-board.in .pl { animation: plPop .5s var(--ease-pop) forwards; animation-delay: calc(min(var(--i), 11) * 65ms); }
+@keyframes plPop { from { opacity: 0; transform: translate(-50%, -50%) scale(.4); } to { opacity: 1; transform: translate(-50%, -50%) scale(1); } }
+
+/* ── "Alive for..." live counters ── */
+.alive-grid { display: grid; gap: var(--s4); grid-template-columns: 1fr; max-width: 640px; margin-inline: auto; }
+.alive-stat { background: var(--surface); border: 1px solid var(--stroke); border-radius: 18px; padding: var(--s6); text-align: center; box-shadow: inset 0 1px 0 rgba(255,255,255,.05); }
+.alive-num { display: block; font-family: var(--font-display); font-weight: 700; font-variant-numeric: tabular-nums; font-size: clamp(1.8rem, 8vw, 3.2rem); line-height: 1; color: var(--text-hi); }
+.alive-stat:first-child .alive-num { background: linear-gradient(120deg, var(--accent), var(--accent-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.alive-label { display: block; margin-top: var(--s3); color: var(--text-lo); font-size: .82rem; letter-spacing: .12em; text-transform: uppercase; }
+.alive-note { text-align: center; color: var(--text-lo); margin-top: var(--s5); font-style: italic; }
+@media (min-width: 720px) { .alive-grid { grid-template-columns: 1fr 1fr; } }

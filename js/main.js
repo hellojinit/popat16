@@ -115,31 +115,22 @@
 
   function renderBarca() {
     var b = D.barca;
-    var lines =
-      '<line class="line" x1="3" y1="3" x2="65" y2="3"/><line class="line" x1="3" y1="102" x2="65" y2="102"/>' +
-      '<line class="line" x1="3" y1="3" x2="3" y2="102"/><line class="line" x1="65" y1="3" x2="65" y2="102"/>' +
-      '<line class="line" x1="3" y1="52.5" x2="65" y2="52.5"/>' +
-      '<circle class="line" cx="34" cy="52.5" r="8.5"/><circle class="line" cx="34" cy="52.5" r="0.6" fill="rgba(255,255,255,.2)"/>' +
-      '<rect class="line" x="16" y="3" width="36" height="14"/><rect class="line" x="25" y="3" width="18" height="6"/>' +
-      '<rect class="line" x="16" y="88" width="36" height="14"/><rect class="line" x="25" y="96" width="18" height="6"/>';
-    var players = b.players.map(function (p, i) {
-      return '<g transform="translate(' + p.x + ',' + p.y + ')">' +
-        '<g class="player' + (p.star ? " star" : "") + '" data-reveal style="--i:' + i + '">' +
-        (p.star ? '<circle class="star-ring" r="6.4"/>' : "") +
-        '<circle class="player-dot" r="4.3"/>' +
-        '<text class="player-num" y="1.25">' + p.n + '</text>' +
-        '<text class="player-name" y="8.4">' + p.name + '</text></g></g>';
+    var field = '<svg class="pitch-field" viewBox="0 0 68 105" preserveAspectRatio="none" aria-hidden="true">' +
+      '<rect x="1.5" y="1.5" width="65" height="102" rx="2" class="fl"/>' +
+      '<line x1="1.5" y1="52.5" x2="66.5" y2="52.5" class="fl"/>' +
+      '<circle cx="34" cy="52.5" r="9" class="fl"/><circle cx="34" cy="52.5" r="0.8" class="fl-dot"/>' +
+      '<rect x="14" y="1.5" width="40" height="16" class="fl"/><rect x="24" y="1.5" width="20" height="6" class="fl"/>' +
+      '<rect x="14" y="87.5" width="40" height="16" class="fl"/><rect x="24" y="97.5" width="20" height="6" class="fl"/>' +
+      '</svg>';
+    var markers = b.players.map(function (p, i) {
+      var lx = (p.x / 68 * 100).toFixed(1), ly = (p.y / 105 * 100).toFixed(1);
+      return '<div class="pl' + (p.star ? " pl-star" : "") + '" style="left:' + lx + '%;top:' + ly + '%;--i:' + i + '">' +
+        '<span class="pl-badge"><b class="pl-num">' + p.n + '</b></span>' +
+        '<span class="pl-name">' + p.name + '</span></div>';
     }).join("");
-    var svg =
-      '<svg class="pitch" viewBox="0 0 68 105" role="img" aria-labelledby="pitch-title">' +
-      '<title id="pitch-title">Barcelona\'s 2010–11 starting eleven, a 4-3-3</title>' +
-      '<defs>' +
-        '<radialGradient id="dotgrad" cx="35%" cy="30%"><stop offset="0" stop-color="#5b8cff"/><stop offset="1" stop-color="#1c46b8"/></radialGradient>' +
-        '<radialGradient id="stargrad" cx="35%" cy="30%"><stop offset="0" stop-color="#ffe08a"/><stop offset="1" stop-color="#e39a2e"/></radialGradient>' +
-      '</defs>' + lines + players + '</svg>';
-    var figure = '<figure>' + svg +
-      '<figcaption><p class="formation-label">' + b.formationLabel + '</p>' +
-      '<p class="pitch-xi">Valdés · Alves, Piqué, Puyol, Abidal · Busquets, Xavi, Iniesta · Pedro, Messi, Villa</p></figcaption></figure>';
+    var figure = '<figure class="pitch-fig" role="img" aria-label="Barcelona 2010-11 starting eleven in a 4-3-3">' +
+      '<div class="pitch-board" data-reveal>' + field + markers + '</div>' +
+      '<figcaption class="formation-label">' + b.formationLabel + '</figcaption></figure>';
     var facts = '<div class="fact-list">' + b.facts.map(function (f, i) {
       return '<div class="fact" data-reveal style="--i:' + i + '"><span class="fact-mark">' + f.mark + '</span><p>' + f.html + '</p></div>';
     }).join("") + '</div>';
@@ -166,14 +157,8 @@
       '</div>' + (t.note ? '<p class="tile-note">' + t.note + '</p>' : "") + '</div>';
   }
   function renderNumbers() {
-    var n = D.numbers, p = n.punchline;
-    var tiles = '<div class="tiles">' + n.tiles.map(tile).join("") +
-      '<div class="tile tile--wide" data-reveal>' +
-        '<p class="tile-label">' + p.label + '</p>' +
-        '<div class="tile-nums" style="justify-content:center">' +
-          '<span class="tile-now" data-countup data-from="' + p.from + '" data-to="' + p.to + '" data-fmt="' + p.fmt + '">' + fmtVal(p.to, p.fmt) + '</span>' +
-        '</div><p class="tile-note">' + p.note + '</p></div>' +
-      '</div>';
+    var n = D.numbers;
+    var tiles = '<div class="tiles">' + n.tiles.map(tile).join("") + '</div>';
     set("numbers", head("numbers", n, tiles) + "</div>");
   }
 
@@ -185,7 +170,7 @@
         '<p class="pop-tag">' + k.tag + '</p><p class="pop-title">' + k.title + '</p>' +
         '<p class="pop-text">' + k.text + '</p></article>';
     }).join("") + '</div>';
-    set("culture", head("culture", c, videoEmbed(c.video) + cards) + "</div>");
+    set("culture", head("culture", c, cards) + "</div>");
   }
 
   function renderClimb() {
@@ -229,7 +214,7 @@
     }).join("") + '</div>';
     var actions = '<div class="finale-actions" data-reveal>' +
       '<button class="btn" id="replay">&#8635; ' + f.replay + '</button>' +
-      '<div><button class="cake" id="cake" aria-label="birthday cake — tap it">🎂</button>' +
+      '<div><button class="cake" id="cake" aria-label="birthday cake, tap it">🎂</button>' +
       '<span class="cake-count" id="cake-count" aria-hidden="true">' + f.cakeHint + '</span></div></div>';
     var inner = '<div class="finale-inner">' +
       '<p class="kicker" data-reveal>' + f.kicker + '</p>' + constants +
@@ -260,8 +245,27 @@
     set("sweet", head("sweet", s, cards) + "</div>");
   }
 
-  renderDay(); renderWorldcup(); renderBarca(); renderSaints(); renderNumbers();
+  function renderAlive() {
+    var a = D.alive;
+    var body = '<div class="alive-grid">' +
+      '<div class="alive-stat" data-reveal><span class="alive-num" id="alive-mins">0</span><span class="alive-label">minutes alive</span></div>' +
+      '<div class="alive-stat" data-reveal style="--i:1"><span class="alive-num" id="alive-secs">0</span><span class="alive-label">seconds alive</span></div>' +
+      '</div><p class="alive-note" data-reveal style="--i:2">' + a.note + '</p>';
+    set("alive", head("alive", a, body) + "</div>");
+  }
+
+  renderDay(); renderAlive(); renderWorldcup(); renderBarca(); renderSaints(); renderNumbers();
   renderCulture(); renderClimb(); renderFullcircle(); renderSweet(); renderPhotos(); renderFinale();
+
+  /* live "alive for..." counters — born July 13, 2010, 7:15:00 pm ET (UTC-4) */
+  var birthMs = Date.parse("2010-07-13T19:15:00-04:00");
+  var aMins = el("alive-mins"), aSecs = el("alive-secs");
+  function tickAlive() {
+    var ms = Date.now() - birthMs;
+    if (aMins) aMins.textContent = Math.floor(ms / 60000).toLocaleString("en-US");
+    if (aSecs) aSecs.textContent = Math.floor(ms / 1000).toLocaleString("en-US");
+  }
+  if (aMins || aSecs) { tickAlive(); setInterval(tickAlive, 1000); }
 
   /* hero name + kicker from data */
   var hn = el("hero-name"); if (hn) hn.textContent = D.name;
