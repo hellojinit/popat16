@@ -145,10 +145,10 @@ window.DATA = {
       { label: "U.S. population",  from: 308745538, to: 342600000, fmt: "compact" },
       { label: "Virginia",         from: 8001024,   to: 8900000,   fmt: "compact" },
       { label: "Lorton, VA",       from: 18610,     to: 21000,     fmt: "compact" },
-      { label: "Gallon of gas",    from: 2.72,  to: 3.80,  fmt: "usd" },
-      { label: "Movie ticket",     from: 7.89,  to: 11.50, fmt: "usd" },
-      { label: "A Big Mac",        from: 3.73,  to: 5.85,  fmt: "usd" },
-      { label: "A new home (avg.)",from: 217000, to: 425000, fmt: "usd0" },
+      { label: "Gallon of gas",    from: 2.72,  to: 3.45,  fmt: "usd" },
+      { label: "Movie ticket",     from: 7.89,  to: 15.00, fmt: "usd" },
+      { label: "A Big Mac",        from: 3.73,  to: 6.49,  fmt: "usd" },
+      { label: "A home near Lorton",from: 400000, to: 650000, fmt: "usd0" },
       { label: "One Bitcoin",      from: 0.01,  to: 63000, fmt: "usd0", thenText: "≈ 1¢", note: "$100 of it that week could be worth $126M to $790M today." }
     ]
   },
@@ -164,7 +164,7 @@ window.DATA = {
       { emoji: "📱", tag: "19 days old", title: "iPhone 4", text: "$199, the first Retina screen, brand new FaceTime. The original iPad was barely three months old." },
       { emoji: "🚫", tag: "Didn't exist yet", title: "Instagram", text: "It launched three months after you did. No Snapchat, no TikTok, and Uber was a tiny startup called UberCab." },
       { emoji: "🌐", tag: "Online", title: "Facebook: 500M", text: "About to cross half a billion users, while Justin Bieber's “Baby” became the most viewed video on YouTube." },
-      { emoji: "⛏️", tag: "Gaming", title: "Minecraft, €9.95", text: "Still a rough alpha built by one guy. Angry Birds was the game everyone had on their phone." },
+      { emoji: "⛏️", tag: "Gaming", title: "Minecraft, $13", text: "Still a rough alpha built by one guy. Angry Birds was the game everyone had on their phone." },
       { emoji: "📼", tag: "The old world", title: "Blockbuster was open", text: "Netflix mostly mailed you DVDs. And the Old Spice Guy went viral that exact week." }
     ]
   },
