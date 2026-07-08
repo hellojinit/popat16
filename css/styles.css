@@ -34,12 +34,16 @@
   --text-mid: rgba(245,247,250,.82);
   --text-lo: rgba(245,247,250,.62);
 
-  --blau: #2E6BE6;
-  --grana: #D6355C;
-  --mar-red: #E2484D;
-  --mar-green: #2FA36B;
-  --gold: #F2C14E;
-  --gold-2: #E39A2E;
+  --blau: #4D8BFF;
+  --grana: #FF3D71;
+  --mar-red: #FF5A5F;
+  --mar-green: #2FD48A;
+  --gold: #FFC93C;
+  --gold-2: #F0A62E;
+  --party-pink: #FF5FA2;
+  --party-cyan: #3AE0FF;
+  --party-purple: #B983FF;
+  --party-lime: #B6F36B;
 
   --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
   --font-body: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -71,13 +75,14 @@
 }
 
 /* per-section accent themes */
-[data-accent="amber"]   { --accent:#F5B841; --accent-2:#E8804D; --glow:rgba(245,184,65,.12); }
-[data-accent="gold"]    { --accent:#F2C14E; --accent-2:#E39A2E; --glow:rgba(242,193,78,.13); }
-[data-accent="barca"]   { --accent:#3B78F0; --accent-2:#D6355C; --glow:rgba(59,120,240,.14); }
-[data-accent="neutral"] { --accent:#9DB2D0; --accent-2:#F2C14E; --glow:rgba(157,178,208,.10); }
-[data-accent="pop"]     { --accent:#B57BEE; --accent-2:#EC5B9E; --glow:rgba(181,123,238,.13); }
-[data-accent="morocco"] { --accent:#E2484D; --accent-2:#2FA36B; --glow:rgba(226,72,77,.13); }
-[data-accent="peak"]    { --accent:#E2484D; --accent-2:#3B78F0; --glow:rgba(226,72,77,.15); }
+[data-accent="amber"]   { --accent:#FFB13C; --accent-2:#FF7A45; --glow:rgba(255,177,60,.16); }
+[data-accent="gold"]    { --accent:#FFC93C; --accent-2:#F0A62E; --glow:rgba(255,201,60,.17); }
+[data-accent="barca"]   { --accent:#4D8BFF; --accent-2:#FF3D71; --glow:rgba(77,139,255,.18); }
+[data-accent="neutral"] { --accent:#B7C6E0; --accent-2:#FFC93C; --glow:rgba(183,198,224,.13); }
+[data-accent="pop"]     { --accent:#C48BFF; --accent-2:#FF5FA2; --glow:rgba(196,139,255,.17); }
+[data-accent="morocco"] { --accent:#FF5A5F; --accent-2:#2FD48A; --glow:rgba(255,90,95,.16); }
+[data-accent="peak"]    { --accent:#FF5A5F; --accent-2:#4D8BFF; --glow:rgba(255,90,95,.18); }
+[data-accent="party"]   { --accent:#FF5FA2; --accent-2:#3AE0FF; --glow:rgba(255,95,162,.18); }
 
 /* ---------- Reset / base ---------- */
 *, *::before, *::after { box-sizing: border-box; }
@@ -146,7 +151,7 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
 .progress {
   position: fixed; top: 0; left: 0; height: 3px; width: 100%;
   transform: scaleX(0); transform-origin: 0 50%; z-index: 40;
-  background: linear-gradient(90deg, var(--gold), var(--mar-red), var(--blau));
+  background: linear-gradient(90deg, var(--gold), var(--party-pink), var(--party-purple), var(--party-cyan), var(--mar-green));
 }
 
 /* ---------- Components ---------- */
@@ -541,9 +546,10 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
 .play-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(242,193,78,.35); }
 .play-btn:active { transform: scale(.97); }
 
-/* hero particles */
+/* hero particles + balloons */
 .hero-particles { position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
-.hero-particles span { position: absolute; bottom: -12px; border-radius: 50%; background: var(--gold); opacity: 0; }
+.hero-particles span { position: absolute; bottom: -14px; opacity: 0; will-change: transform; }
+.hero-particles .balloon { line-height: 1; filter: drop-shadow(0 4px 10px rgba(0,0,0,.45)); }
 
 /* ambient + entrance motion (only when motion allowed) */
 .motion-ok .hero-particles span { animation-name: floatUp; animation-timing-function: linear; animation-iteration-count: infinite; }
@@ -568,3 +574,23 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
 @media (min-width: 800px) {
   .photos-wrap { grid-template-columns: 1fr 1fr; }
 }
+
+/* brighter Saints gold */
+[data-accent="saints"] { --accent:#F2D183; --accent-2:#C79B4E; --glow:rgba(242,209,131,.16); }
+
+/* USA beat */
+.usa-note { --reveal-y: 22px; max-width: 640px; margin: var(--s6) auto 0; background: var(--surface); border: 1px solid var(--stroke); border-radius: 16px; padding: var(--s5); box-shadow: inset 0 1px 0 rgba(255,255,255,.05); }
+.usa-note .eyebrow { color: var(--accent); margin-bottom: var(--s3); }
+.usa-note p:last-child { color: var(--text-mid); }
+.usa-note b { color: var(--text-hi); font-weight: 600; }
+
+/* Saints joke callout */
+.joke { --reveal-y: 20px; max-width: 620px; margin: var(--s6) auto 0; display: flex; gap: var(--s4); align-items: flex-start; background: linear-gradient(180deg, rgba(255,90,95,.10), var(--surface)); border: 1px solid var(--stroke-hi); border-radius: 16px; padding: var(--s5); }
+.joke-mark { font-size: 1.7rem; line-height: 1; flex: none; }
+.joke p { color: var(--text-mid); font-style: italic; }
+.joke b { color: var(--text-hi); font-weight: 600; font-style: normal; }
+
+/* Sweet Sixteen cards */
+.sweet-card { border-color: var(--stroke-hi); }
+.sweet-card .pop-tag { color: var(--accent); margin-bottom: 2px; }
+@media (min-width: 800px) { .sweet-grid { grid-template-columns: repeat(3, 1fr); } }

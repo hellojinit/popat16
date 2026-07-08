@@ -51,7 +51,7 @@
     var meta = w.meta.map(function (m) { return "<span><b>" + m[0] + "</b> " + m[1] + "</span>"; }).join("");
     var weather =
       '<article class="card card--accent weather" data-reveal aria-label="Weather on July 13, 2010">' +
-        '<p class="eyebrow">Alexandria, Virginia &middot; that day</p>' +
+        '<p class="eyebrow">Arlington, Virginia &middot; 7:15 pm</p>' +
         '<div class="weather-top">' +
           '<span class="weather-temp"><b data-countup data-from="' + w.low + '" data-to="' + w.high + '" data-fmt="int">' + w.high + '</b>&deg;' +
           '<span class="lo"> / ' + w.low + '&deg; low</span></span>' +
@@ -97,7 +97,9 @@
     var w = D.worldcup;
     var matches = '<div class="matches">' + matchCard(w.final, 0) + matchCard(w.thirdPlace, 1) + '</div>';
     var paul = '<div class="paul" data-reveal><span aria-hidden="true">🐙</span><span>' + w.paul + '</span></div>';
-    set("worldcup", head("worldcup", w, matches + paul + videoEmbed(w.video)) + "</div>");
+    var u = w.usa;
+    var usa = '<div class="usa-note" data-reveal><p class="eyebrow">' + u.label + '</p><p>' + u.text + '</p></div>' + videoEmbed(u.video);
+    set("worldcup", head("worldcup", w, matches + paul + videoEmbed(w.video) + usa) + "</div>");
   }
 
   function renderSaints() {
@@ -106,7 +108,8 @@
     var facts = '<div class="fact-list">' + s.facts.map(function (f, i) {
       return '<div class="fact" data-reveal style="--i:' + i + '"><span class="fact-mark">' + f.mark + '</span><p>' + f.html + '</p></div>';
     }).join("") + '</div>';
-    set("saints", head("saints", s, card + facts + videoEmbed(s.video)) + "</div>");
+    var joke = '<div class="joke" data-reveal><span class="joke-mark" aria-hidden="true">😬</span><p>' + s.joke + '</p></div>';
+    set("saints", head("saints", s, card + facts + videoEmbed(s.video) + joke) + "</div>");
   }
 
   function renderBarca() {
@@ -246,24 +249,40 @@
     set("photos", head("photos", p, '<div class="photos-wrap">' + frame(p.then) + frame(p.now) + '</div>') + "</div>");
   }
 
+  function renderSweet() {
+    var s = D.sweet;
+    var cards = '<div class="chip-grid sweet-grid">' + s.cards.map(function (c, i) {
+      return '<article class="chip sweet-card" data-reveal style="--i:' + i + '">' +
+        '<span class="chip-emoji" aria-hidden="true">' + c.emoji + '</span>' +
+        '<div><p class="pop-tag">' + c.tag + '</p><p class="chip-title">' + c.title + '</p><p class="chip-text">' + c.text + '</p></div></article>';
+    }).join("") + '</div>';
+    set("sweet", head("sweet", s, cards) + "</div>");
+  }
+
   renderDay(); renderWorldcup(); renderBarca(); renderSaints(); renderNumbers();
-  renderCulture(); renderClimb(); renderFullcircle(); renderPhotos(); renderFinale();
+  renderCulture(); renderClimb(); renderFullcircle(); renderSweet(); renderPhotos(); renderFinale();
 
   /* hero name + kicker from data */
   var hn = el("hero-name"); if (hn) hn.textContent = D.name;
   var hk = document.querySelector(".hero-kicker"); if (hk) hk.textContent = D.hero.kicker;
-  var ak = document.querySelector(".hero-akaid");
-  if (ak) { if (D.nickname) ak.textContent = "a.k.a. " + D.nickname + " 🦜"; else ak.remove(); }
 
-  /* ambient hero particles (decorative, motion only) */
+  /* ambient hero party confetti + balloons (decorative, motion only) */
   var hp = document.querySelector(".hero-particles");
   if (hp && motionOK) {
+    var PARTY = ["#FFC93C", "#FF5FA2", "#3AE0FF", "#B983FF", "#B6F36B", "#FF8A3D", "#4D8BFF", "#2FD48A"];
     var frag = "";
-    for (var pi = 0; pi < 16; pi++) {
-      var d = 2 + Math.round(Math.random() * 4);
-      frag += '<span style="left:' + Math.round(Math.random() * 100) + '%;width:' + d + 'px;height:' + d + 'px;' +
-        'animation-duration:' + (9 + Math.round(Math.random() * 10)) + 's;animation-delay:' + (-Math.round(Math.random() * 12)) + 's;' +
-        '--o:' + (0.15 + Math.random() * 0.35).toFixed(2) + '"></span>';
+    for (var pi = 0; pi < 20; pi++) {
+      var d = 3 + Math.round(Math.random() * 5);
+      frag += '<span class="dot" style="left:' + Math.round(Math.random() * 100) + '%;width:' + d + 'px;height:' + d + 'px;' +
+        'background:' + PARTY[(Math.random() * PARTY.length) | 0] + ';border-radius:' + (Math.random() < 0.5 ? "50%" : "2px") + ';' +
+        'animation-duration:' + (9 + Math.round(Math.random() * 10)) + 's;animation-delay:' + (-Math.round(Math.random() * 14)) + 's;' +
+        '--o:' + (0.3 + Math.random() * 0.45).toFixed(2) + '"></span>';
+    }
+    var balloons = ["🎈", "🎈", "🎈", "🎉", "🎂"];
+    for (var bi = 0; bi < balloons.length; bi++) {
+      frag += '<span class="balloon" style="left:' + (6 + Math.round(Math.random() * 86)) + '%;font-size:' + (20 + Math.round(Math.random() * 16)) + 'px;' +
+        'animation-duration:' + (15 + Math.round(Math.random() * 9)) + 's;animation-delay:' + (-Math.round(Math.random() * 16)) + 's;' +
+        '--o:' + (0.55 + Math.random() * 0.3).toFixed(2) + '">' + balloons[bi] + '</span>';
     }
     hp.innerHTML = frag;
   }
@@ -367,9 +386,10 @@
     });
   }
   runOdometer();
+  if (motionOK) setTimeout(function () { launchConfetti(120, 0.9); }, 900);
 
   /* ---------- confetti ---------- */
-  var COLORS = ["#F2C14E", "#3B78F0", "#D6355C", "#E2484D", "#2FA36B", "#FFFFFF"];
+  var COLORS = ["#FFC93C", "#FF5FA2", "#3AE0FF", "#B983FF", "#B6F36B", "#FF8A3D", "#FF5A5F", "#FFFFFF"];
   function launchConfetti(count, power) {
     if (!motionOK) return;
     count = count || 150; power = power || 1;

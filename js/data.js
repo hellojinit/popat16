@@ -6,10 +6,10 @@
    ============================================================ */
 window.DATA = {
 
-  /* ▼▼ his name + the nickname the family uses ▼▼ */
-  name: "Zain",
+  /* ▼▼ the name shown on the site ▼▼ */
+  name: "Popat",
   nickname: "Popat",
-  /* ▲▲ name → the big hero line; nickname → the "a.k.a." tag + closing line ▲▲ */
+  /* ▲▲ appears in "Happy 16th, ___" (hero) and the closing line ▲▲ */
 
   /* ══════════════════════════════════════════════════════════
      THE ONE THING TO UPDATE — France vs Morocco quarterfinal
@@ -69,7 +69,12 @@ window.DATA = {
       kicker: "With the very last kick of the game, Forlán's free kick hit the crossbar. Inches from extra time."
     },
     paul: "And a German octopus named Paul — 8 for 8 that summer — had predicted every bit of it.",
-    video: { id: "3pCPQDxZzfY", title: "Iniesta's World Cup-winning goal", caption: "The goal that won it — the week you were born." }
+    video: { id: "3pCPQDxZzfY", title: "Iniesta's World Cup-winning goal", caption: "The goal that won it — the week you were born." },
+    usa: {
+      label: "🇺🇸 And your country had its moment",
+      text: "Three weeks before you were born, <b>Landon Donovan</b> scored in the 91st minute against Algeria — the most famous goal in U.S. soccer history. It won the group (ahead of England!) and sent the USA into the last 16. A whole country lost its mind.",
+      video: { id: "b7eZmKWW9s4", title: "Donovan's 91st-minute winner vs Algeria", caption: "“Go, go, USA!” — three weeks before you were born." }
+    }
   },
 
   barca: {
@@ -122,7 +127,8 @@ window.DATA = {
       { mark: "⚡", html: "Coach <b>Sean Payton</b> opened the second half with the famous surprise onside kick — “Ambush.”" },
       { mark: "74", html: "<b>Tracy Porter</b> jumped Manning's pass and took it 74 yards to the house to seal it." }
     ],
-    video: { id: "P0zuCOfcSjc", title: "Super Bowl XLIV highlights", caption: "Saints 31–17 Colts — the whole ride, in a few minutes." }
+    video: { id: "P0zuCOfcSjc", title: "Super Bowl XLIV highlights", caption: "Saints 31–17 Colts — the whole ride, in a few minutes." },
+    joke: "One small catch: they won it all five months <b>before</b> you showed up… and haven't won a Super Bowl since. Every single year of your life — nothing. Coincidence? 💀 (You've still got time to switch teams. Just saying.)"
   },
 
   numbers: {
@@ -212,6 +218,17 @@ window.DATA = {
     title: "Look how far you've come.",
     then: { year: "2010", caption: "Day one — Arlington, VA", src: "" },
     now:  { year: "2026", caption: "Sixteen and unstoppable",  src: "" }
+  },
+
+  sweet: {
+    kicker: "Sweet sixteen 🎉",
+    title: "What 16 unlocks.",
+    lead: "Old enough to drive, young enough to still get grounded. Here's to year sixteen.",
+    cards: [
+      { emoji: "🚗", tag: "New this year", title: "You're learning to drive", text: "Somewhere in Lorton, a steering wheel is sweating. The roads of Northern Virginia will never be the same — godspeed to every other driver out there." },
+      { emoji: "🎉", tag: "Countdown", title: "3 years to go", text: "Only three more years until you've officially, medically beaten teen pregnancy. We're all rooting for you. Stay strong. 🙏" },
+      { emoji: "🦖", tag: "Throwback", title: "Your dinosaur era", text: "You used to be obsessed with dinosaurs. Fun fact: a T. rex only lived about 28 years — so at 16, in rex years, you're basically a responsible adult. Rawr." }
+    ]
   },
 
   finale: {
