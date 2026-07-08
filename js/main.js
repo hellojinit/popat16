@@ -153,7 +153,7 @@
     return '<div class="tile" data-reveal style="--i:' + (i % 8) + '">' +
       '<p class="tile-label">' + t.label + '</p>' +
       '<span class="tile-big"' + attrs + '>' + big + '</span>' +
-      '<p class="tile-sub"><span class="tile-year">in 2010</span> · ' + fmtVal(t.to, t.fmt) + ' today</p>' +
+      '<p class="tile-sub"><span class="tile-arrow">→</span> ' + fmtVal(t.to, t.fmt) + '</p>' +
       (t.note ? '<p class="tile-note">' + t.note + '</p>' : "") + '</div>';
   }
   function renderNumbers() {
