@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Happy 16th: The World on July 13, 2010</title>
   <meta name="description" content="A time machine to the day you arrived. Your Barça, your Morocco, and the whole world, 2010 vs. 2026.">
-  <meta name="theme-color" content="#070A12">
+  <meta name="theme-color" content="#06080F">
   <meta name="color-scheme" content="dark">
 
   <!-- Open Graph / social share -->
@@ -27,7 +27,33 @@
   <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
+  <div class="backdrop" aria-hidden="true"></div>
   <div class="progress" aria-hidden="true"></div>
+
+  <!-- Jump menu -->
+  <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-panel">
+    <span class="nav-ico" aria-hidden="true"><i></i><i></i><i></i></span>
+    <span class="sr-only">Menu</span>
+  </button>
+  <div class="nav-backdrop" id="nav-backdrop"></div>
+  <nav class="nav-panel" id="nav-panel" aria-label="Page sections">
+    <p class="nav-title">Jump to</p>
+    <ul class="nav-list">
+      <li><a href="#hero"><span class="nav-emoji" aria-hidden="true">🎂</span>Top</a></li>
+      <li><a href="#day"><span class="nav-emoji" aria-hidden="true">🌇</span>The day you arrived</a></li>
+      <li><a href="#alive"><span class="nav-emoji" aria-hidden="true">⏱️</span>Seconds alive</a></li>
+      <li><a href="#worldcup"><span class="nav-emoji" aria-hidden="true">🏆</span>World Cup 2010</a></li>
+      <li><a href="#barca"><span class="nav-emoji" aria-hidden="true">🔵</span>Your Barça</a></li>
+      <li><a href="#saints"><span class="nav-emoji" aria-hidden="true">🏈</span>Your Saints</a></li>
+      <li><a href="#numbers"><span class="nav-emoji" aria-hidden="true">🔢</span>2010 → 2026</a></li>
+      <li><a href="#culture"><span class="nav-emoji" aria-hidden="true">🎬</span>A different planet</a></li>
+      <li><a href="#climb"><span class="nav-emoji" aria-hidden="true">🇲🇦</span>The climb</a></li>
+      <li><a href="#fullcircle"><span class="nav-emoji" aria-hidden="true">🔄</span>Full circle</a></li>
+      <li><a href="#sweet"><span class="nav-emoji" aria-hidden="true">🎉</span>Sweet sixteen</a></li>
+      <li><a href="#photos"><span class="nav-emoji" aria-hidden="true">📸</span>Then &amp; now</a></li>
+      <li><a href="#finale"><span class="nav-emoji" aria-hidden="true">💛</span>The finale</a></li>
+    </ul>
+  </nav>
 
   <main id="main">
     <!-- HERO — static so the largest paint needs no JS -->
@@ -41,9 +67,11 @@
         </div>
         <span class="sr-only">The year rewinds to 2010.</span>
         <h1 class="hero-title" id="hero-title">Happy 16th, <span id="hero-name">Popat</span>.</h1>
-        <p class="hero-sub">Here are some fun facts, and a look at how the world was the day you were born.<br>Tuesday, July&nbsp;13,&nbsp;2010.</p>
-        <button class="play-btn" id="play-story" type="button">▶&nbsp;&nbsp;Play the story</button>
-        <div class="scroll-cue" aria-hidden="true"><span class="scroll-cue-dot"></span></div>
+        <p class="hero-sub">Some fun facts, and how the world looked the day you were born.<br>Tuesday, July&nbsp;13,&nbsp;2010.</p>
+        <button class="scroll-btn" id="scroll-explore" type="button">
+          <span class="scroll-btn-label">Scroll down to explore</span>
+          <span class="scroll-btn-arrow" aria-hidden="true">↓</span>
+        </button>
       </div>
     </section>
 

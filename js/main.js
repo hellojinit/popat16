@@ -299,44 +299,63 @@
     hp.innerHTML = frag;
   }
 
-  /* "Play the story" — cinematic auto-scroll through the whole page */
-  var playBtn = el("play-story"), playing = false, playRAF = null, playLast = 0;
-  if (playBtn && !motionOK) playBtn.style.display = "none";
-  function stopPlay() {
-    if (!playing) return;
-    playing = false;
-    if (playRAF) cancelAnimationFrame(playRAF);
-    document.documentElement.style.scrollBehavior = "";
-    if (playBtn) playBtn.textContent = "▶  Play the story";
-  }
-  function startPlay() {
-    if (!motionOK) return;
-    playing = true;
-    if (playBtn) playBtn.textContent = "⏸  Pause";
-    document.documentElement.style.scrollBehavior = "auto";
-    playLast = 0;
-    function step(now) {
-      if (!playing) return;
-      if (!playLast) playLast = now;
-      var dt = Math.min(now - playLast, 48); playLast = now;
-      window.scrollBy(0, 0.34 * dt);
-      if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2) { stopPlay(); return; }
-      playRAF = requestAnimationFrame(step);
-    }
-    playRAF = requestAnimationFrame(step);
-  }
-  if (playBtn) {
-    playBtn.addEventListener("click", function () {
-      if (playing) { stopPlay(); return; }
-      window.scrollTo({ top: 0, behavior: "auto" });
-      setTimeout(startPlay, 350);
+  /* "Scroll down to explore" — jumps to the first section */
+  var exploreBtn = el("scroll-explore");
+  if (exploreBtn) {
+    var exploreLabel = exploreBtn.querySelector(".scroll-btn-label");
+    if (exploreLabel && D.hero.cta) exploreLabel.textContent = D.hero.cta;
+    exploreBtn.addEventListener("click", function () {
+      var first = el("day");
+      if (first) first.scrollIntoView({ behavior: motionOK ? "smooth" : "auto", block: "start" });
     });
   }
-  ["wheel", "touchstart", "pointerdown", "keydown"].forEach(function (evn) {
-    window.addEventListener(evn, function (e) {
-      if (playing && !(e.target && e.target.closest && e.target.closest("#play-story"))) stopPlay();
+
+  /* ---------- jump menu ---------- */
+  var navToggle = el("nav-toggle"), navPanel = el("nav-panel"), navBackdrop = el("nav-backdrop");
+  var root = document.documentElement;
+  function setNav(open) {
+    root.classList.toggle("nav-open", open);
+    if (navToggle) navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+  }
+  if (navToggle && navPanel && navBackdrop) {
+    /* drop links whose section never rendered (e.g. photos with no images) */
+    var navLinks = {};
+    navPanel.querySelectorAll("a[href^='#']").forEach(function (a) {
+      var id = a.getAttribute("href").slice(1);
+      if (el(id)) navLinks[id] = a; else a.parentNode.remove();
+    });
+
+    navToggle.addEventListener("click", function () { setNav(!root.classList.contains("nav-open")); });
+    navBackdrop.addEventListener("click", function () { setNav(false); });
+    navPanel.addEventListener("click", function (e) { if (e.target.closest("a")) setNav(false); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") setNav(false); });
+
+    /* highlight the section currently under the middle of the viewport */
+    var navIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        Object.keys(navLinks).forEach(function (k) { navLinks[k].removeAttribute("aria-current"); });
+        navLinks[e.target.id].setAttribute("aria-current", "true");
+      });
+    }, { rootMargin: "-45% 0px -50% 0px", threshold: 0 });
+    Object.keys(navLinks).forEach(function (k) { navIO.observe(el(k)); });
+  }
+
+  /* progress bar — CSS drives it where scroll-driven animations exist */
+  var bar = document.querySelector(".progress");
+  var hasSDA = window.CSS && CSS.supports && CSS.supports("animation-timeline: scroll()");
+  if (bar && !hasSDA) {
+    var barQueued = false;
+    function drawBar() {
+      barQueued = false;
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.transform = "scaleX(" + (max > 0 ? Math.min(window.scrollY / max, 1) : 0) + ")";
+    }
+    window.addEventListener("scroll", function () {
+      if (!barQueued) { barQueued = true; requestAnimationFrame(drawBar); }
     }, { passive: true });
-  });
+    drawBar();
+  }
 
   /* ============================================================
      MOTION
