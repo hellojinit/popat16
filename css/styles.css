@@ -593,7 +593,7 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
 /* Sweet Sixteen cards */
 .sweet-card { border-color: var(--stroke-hi); }
 .sweet-card .pop-tag { color: var(--accent); margin-bottom: 2px; }
-@media (min-width: 800px) { .sweet-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 800px) { .sweet-grid { grid-template-columns: repeat(2, 1fr); } }
 
 /* ── Barça lineup board (TV style) ── */
 .pitch-fig { margin: 0; }

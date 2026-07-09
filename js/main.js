@@ -263,6 +263,7 @@
   renderCulture(); renderClimb(); renderFullcircle(); renderSweet(); renderPhotos(); renderFinale();
 
 
+
   /* live "alive for..." counters — born July 13, 2010, 7:15:00 pm ET (UTC-4) */
   var birthMs = Date.parse("2010-07-13T19:15:00-04:00");
   var aMins = el("alive-mins"), aSecs = el("alive-secs");

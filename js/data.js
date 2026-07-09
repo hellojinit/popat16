@@ -224,6 +224,7 @@ window.DATA = {
     title: "What 16 unlocks.",
     lead: "Old enough to drive, young enough to still get grounded. Here's to year sixteen.",
     cards: [
+      { emoji: "🥋", tag: "On the mat", title: "Your taekwondo", text: "The martial art you train is the most-practiced on the planet: over 70 million people in more than 200 countries, all throwing kicks like you. And “taekwondo” literally means the way of the foot and the fist." },
       { emoji: "🚗", tag: "New this year", title: "You're learning to drive", text: "Somewhere in Lorton, a steering wheel is sweating. The roads of Northern Virginia will never be the same, and godspeed to every other driver out there." },
       { emoji: "🎉", tag: "Countdown", title: "3 years to go", text: "Only three more years until you've officially, medically beaten teen pregnancy. We're all rooting for you. Stay strong. 🙏" },
       { emoji: "🦖", tag: "Throwback", title: "Your dinosaur era", text: "You used to be obsessed with dinosaurs. Fun fact: a T. rex only lived about 28 years, so at 16, in rex years, you're basically a responsible adult. Rawr." }
