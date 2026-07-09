@@ -25,6 +25,7 @@
 /* ---------- Tokens ---------- */
 :root {
   --bg-0: #06080F;
+  --bg-0-0: rgba(6, 8, 15, 0); /* transparent twin of --bg-0, for clean gradient fades */
   --bg-1: #0A0F1D;
   --surface: rgba(255,255,255,.045);
   --surface-2: rgba(255,255,255,.075);
@@ -70,9 +71,8 @@
 
   --radius: 20px;
 
-  /* textures */
-  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23g)' opacity='0.42'/%3E%3C/svg%3E");
-  --dots: radial-gradient(rgba(255,255,255,.055) 1px, transparent 1.5px);
+  /* texture — a clean dot grid, no film grain */
+  --dots: radial-gradient(rgba(255,255,255,.05) 1px, transparent 1.5px);
 
   /* default accent (overridden per section) */
   --accent: #FFC93C;
@@ -95,7 +95,7 @@
 /* ---------- Reset / base ---------- */
 *, *::before, *::after { box-sizing: border-box; }
 * { margin: 0; }
-html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; background: var(--bg-0); }
 body {
   background: var(--bg-0);
   color: var(--text-mid);
@@ -128,11 +128,26 @@ a { color: inherit; }
 .backdrop {
   position: fixed; inset: 0; z-index: -1; pointer-events: none;
   background:
-    radial-gradient(70% 55% at 6% -5%,  rgba(91,149,255,.11), transparent 62%),
-    radial-gradient(55% 45% at 96% 12%, rgba(255,95,162,.10), transparent 62%),
-    radial-gradient(60% 40% at 78% 62%, rgba(185,131,255,.07), transparent 65%),
-    radial-gradient(80% 55% at 30% 104%, rgba(47,212,138,.08), transparent 62%),
+    radial-gradient(70% 50% at 10% 16%,  rgba(91,149,255,.11), transparent 62%),
+    radial-gradient(55% 42% at 94% 26%,  rgba(255,95,162,.10), transparent 62%),
+    radial-gradient(60% 40% at 78% 60%,  rgba(185,131,255,.07), transparent 65%),
+    radial-gradient(80% 50% at 30% 88%,  rgba(47,212,138,.08), transparent 62%),
     linear-gradient(180deg, var(--bg-0) 0%, #080C17 45%, var(--bg-0) 100%);
+}
+/* Pin the very top and bottom of the viewport to exactly --bg-0 so iOS Safari's
+   status bar and toolbar — both filled with theme-color — meet the page seamlessly.
+   These sit above the sections (whose glow orbs scroll past the edges) but below
+   the progress bar (z 40) and the menu (z 60+). */
+body::before, body::after {
+  content: ""; position: fixed; left: 0; right: 0; z-index: 39; pointer-events: none;
+}
+body::before {
+  top: 0; height: calc(env(safe-area-inset-top, 0px) + 56px);
+  background: linear-gradient(180deg, var(--bg-0) 0%, var(--bg-0) 34%, var(--bg-0-0) 100%);
+}
+body::after {
+  bottom: 0; height: calc(env(safe-area-inset-bottom, 0px) + 56px);
+  background: linear-gradient(0deg, var(--bg-0) 0%, var(--bg-0) 34%, var(--bg-0-0) 100%);
 }
 
 /* ---------- Typography ---------- */
@@ -159,9 +174,10 @@ a { color: inherit; }
   overflow: clip;
   scroll-margin-top: 8px;
 }
-.section:nth-of-type(even) {
-  background: linear-gradient(180deg, rgba(255,255,255,.018), rgba(255,255,255,.045));
-}
+/* No alternating section tint. Any background that scrolls will sooner or later sit
+   at the top or bottom of the viewport, where it no longer matches the theme-color
+   Safari paints its status bar and toolbar with — that mismatch reads as an
+   uncovered safe area. Depth comes from the fixed aurora and the per-section orbs. */
 .container { max-width: var(--content); margin-inline: auto; }
 .section-head { max-width: 60ch; margin-bottom: var(--s6); }
 
@@ -174,22 +190,25 @@ a { color: inherit; }
     radial-gradient(closest-side at 38% 42%, var(--glow), transparent 72%),
     radial-gradient(closest-side at 68% 60%, var(--glow-2), transparent 72%);
 }
-/* grain + dot-grid texture, fading out down the section */
+/* dot-grid texture, fading out down the section */
 .section::after {
   content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
-  background-image: var(--dots), var(--grain);
-  background-size: 26px 26px, 140px 140px;
-  opacity: .6;
+  background-image: var(--dots);
+  background-size: 26px 26px;
+  opacity: .5;
   -webkit-mask-image: linear-gradient(180deg, #000 0%, rgba(0,0,0,.4) 55%, transparent 100%);
           mask-image: linear-gradient(180deg, #000 0%, rgba(0,0,0,.4) 55%, transparent 100%);
 }
 .section > * { position: relative; z-index: 1; }
 
-/* top scroll-progress bar */
+/* scroll-progress bar — down the right edge, clear of the browser's top chrome */
 .progress {
-  position: fixed; top: 0; left: 0; height: 3px; width: 100%;
-  transform: scaleX(0); transform-origin: 0 50%; z-index: 40;
-  background: linear-gradient(90deg, var(--gold), var(--party-pink), var(--party-purple), var(--party-cyan), var(--mar-green));
+  position: fixed; z-index: 40; pointer-events: none;
+  top: calc(env(safe-area-inset-top, 0px) + 8px);
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 8px);
+  right: 3px; width: 3px; border-radius: 3px;
+  transform: scaleY(0); transform-origin: 50% 0;
+  background: linear-gradient(180deg, var(--gold), var(--party-pink), var(--party-purple), var(--party-cyan), var(--mar-green));
   /* own compositing layer so the fixed bar never repaints mid-scroll */
   will-change: transform;
   backface-visibility: hidden;
@@ -758,8 +777,8 @@ a { color: inherit; }
 /* ---------- Progressive scroll-driven decoration ---------- */
 @media (prefers-reduced-motion: no-preference) {
   @supports (animation-timeline: scroll()) {
-    .progress { animation: grow-x linear; animation-timeline: scroll(root); }
-    @keyframes grow-x { to { transform: scaleX(1); } }
+    .progress { animation: grow-y linear; animation-timeline: scroll(root); }
+    @keyframes grow-y { to { transform: scaleY(1); } }
   }
   @supports (animation-timeline: view()) {
     .section::before { animation: orb-drift linear both; animation-timeline: view(); animation-range: entry 0% exit 100%; }

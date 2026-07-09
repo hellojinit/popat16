@@ -349,7 +349,7 @@
     function drawBar() {
       barQueued = false;
       var max = document.documentElement.scrollHeight - window.innerHeight;
-      bar.style.transform = "scaleX(" + (max > 0 ? Math.min(window.scrollY / max, 1) : 0) + ")";
+      bar.style.transform = "scaleY(" + (max > 0 ? Math.min(window.scrollY / max, 1) : 0) + ")";
     }
     window.addEventListener("scroll", function () {
       if (!barQueued) { barQueued = true; requestAnimationFrame(drawBar); }
