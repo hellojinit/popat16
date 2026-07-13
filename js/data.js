@@ -130,7 +130,9 @@ window.DATA = {
       { label: "Gallon of gas",    from: 2.72,  to: 3.45,  fmt: "usd" },
       { label: "Movie ticket",     from: 7.89,  to: 15.00, fmt: "usd" },
       { label: "A Big Mac",        from: 3.73,  to: 6.49,  fmt: "usd" },
-      { label: "One Bitcoin",      from: 0.01,  to: 63000, fmt: "usd0", thenText: "≈ 1¢", note: "$100 of it that week could be worth $126M to $790M today." }
+      { label: "One Bitcoin",      from: 0.01,  to: 63000, fmt: "usd0", thenText: "≈ 1¢", note: "$100 of it that week could be worth $126M to $790M today." },
+      { label: "India's population",   from: 1234000000, to: 1463000000, fmt: "compact", note: "In 2023 India passed China to become the most populous country on Earth — #2 when you were born, #1 today." },
+      { label: "Morocco's population", from: 32000000,   to: 37000000,   fmt: "compact", note: "About 5 million more Moroccans than the year you were born." }
     ]
   },
 
@@ -144,6 +146,7 @@ window.DATA = {
       { emoji: "🎬", tag: "In theaters", title: "Summer 2010", text: "Twilight: Eclipse, Toy Story 3, and Inception, out three days after you. Avatar was still the biggest film ever made." },
       { emoji: "📱", tag: "19 days old", title: "iPhone 4", text: "$199, the first Retina screen, brand new FaceTime. The original iPad was barely three months old." },
       { emoji: "🕵️", tag: "On TV that night", title: "Crime night on USA", text: "July 13, 2010 was a huge night on USA Network — the home of Monk. Hours after you were born, they premiered White Collar's new season and the very first Covert Affairs, back to back. Monk had cracked his final case just seven months earlier, in the most-watched drama in cable history at the time." },
+      { emoji: "🏙️", tag: "Six months before you", title: "The tallest tower ever", text: "In January 2010, Dubai opened the Burj Khalifa — 828 metres, over half a mile tall. Sixteen years later, nothing on Earth has topped it. It's been the tallest building in the world for your entire life." },
       { emoji: "🚫", tag: "Didn't exist yet", title: "Instagram", text: "It launched three months after you did. No Snapchat, no TikTok, no Fortnite." },
       { emoji: "🌐", tag: "Online", title: "Facebook: 500M", text: "About to cross half a billion users, while Justin Bieber's “Baby” became the most viewed video on YouTube." },
       { emoji: "⛏️", tag: "Gaming", title: "Minecraft, $13", text: "Still a rough alpha built by one guy. Angry Birds was the game everyone had on their phone." },
@@ -212,7 +215,8 @@ window.DATA = {
       "Barça is still Barça.",
       "The Saints are still who dat.",
       "The best summers are still the ones with your birthday.",
-      { html: "US, Morocco, India and all your teams are <span class=\"grad\">still climbing.</span>" }
+      { html: "US, Morocco, India and all your teams are <span class=\"grad\">still climbing.</span>" },
+      { html: "And whatever the world does next, you being here is the best thing about it. <span class=\"grad\">Never stop growing, never stop being you.</span>" }
     ],
     message: "Keep growing, keep smiling. Happy birthday, {NICK}!",
     replay: "Replay the rewind",
