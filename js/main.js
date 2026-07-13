@@ -189,7 +189,7 @@
   function renderFullcircle() {
     var f = D.fullcircle;
     var coda = '<div class="coda-hl" data-reveal><span class="coda-star" aria-hidden="true">🎂</span><p>' + f.coda + '</p></div>';
-    var twins = f.twins ? '<div class="twins" data-reveal><p class="twins-label">' + f.twins.label + '</p><div class="twins-grid">' +
+    var twins = f.twins ? '<div class="twins" data-reveal>' + (f.twins.label ? '<p class="twins-label">' + f.twins.label + '</p>' : '') + '<div class="twins-grid">' +
       f.twins.people.map(function (p) {
         return '<div class="twin"><span class="twin-emoji" aria-hidden="true">' + p.emoji + '</span>' +
           '<span class="twin-body"><span class="twin-name">' + p.name + '</span><span class="twin-note">' + p.note + '</span></span></div>';

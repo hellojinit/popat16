@@ -45,7 +45,7 @@ window.DATA = {
   worldcup: {
     kicker: "48 hours before you arrived",
     title: "The world crowned a champion.",
-    lead: "The 2010 World Cup final was played in Johannesburg on July 11, two days before you were born — and Barça were all over it.",
+    lead: "The 2010 World Cup final was played in Johannesburg on July 11, two days before you were born — and Barça were all over it. Sixteen years later, you turn 16 right in the middle of one.",
     final: {
       label: "July 11 · the final",
       home: "Spain", away: "Netherlands", score: "1-0", detail: "Iniesta, 116'",
@@ -171,12 +171,10 @@ window.DATA = {
   },
 
   fullcircle: {
-    kicker: "Right now",
-    title: "You turn 16 during a World Cup.",
-    lead: "You were born two days after one World Cup ended. Sixteen years later, you turn 16 right in the middle of the next one.",
+    kicker: "Birthday twins",
+    title: "Look who else has your birthday.",
     coda: "You share a birthday with Barcelona's teenage superstar. <b>Lamine Yamal</b> was born on July 13, 2007 — same day as you, just three years earlier. The day you turn 16, he turns 19.",
     twins: {
-      label: "And you're in good company. A few other July 13 birthdays:",
       people: [
         { emoji: "🎬", name: "Harrison Ford", note: "Han Solo & Indiana Jones" },
         { emoji: "🖖", name: "Patrick Stewart", note: "Professor X & Captain Picard" },
@@ -190,9 +188,9 @@ window.DATA = {
   sweet: {
     kicker: "Sweet sixteen 🎉",
     title: "What 16 unlocks.",
-    lead: "Old enough to drive, young enough to still get grounded. Here's to year sixteen.",
+    lead: "Old enough to drive, young enough to have screen time limit lol. Here's to year sixteen.",
     cards: [
-      { emoji: "🚗", tag: "New this year", title: "You're learning to drive", text: "Remember: speed limits only apply when there's a cop nearby. You already paid for the whole speedometer, not just the left half." },
+      { emoji: "🚗", tag: "New this year", title: "You're learning to drive", text: "Remember: speed limits only apply when there's a cop nearby. You paid for the whole speedometer, not just the left half." },
       { emoji: "🎉", tag: "Countdown", title: "3 years to go", text: "Only three more years until you've officially, medically beaten teen pregnancy. We're all rooting for you. Stay strong. 🙏" }
     ]
   },
