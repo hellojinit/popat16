@@ -127,12 +127,12 @@ window.DATA = {
       { label: "U.S. population",  from: 308745538, to: 342600000, fmt: "compact" },
       { label: "Virginia",         from: 8001024,   to: 8900000,   fmt: "compact" },
       { label: "Lorton, VA",       from: 18610,     to: 21000,     fmt: "compact" },
-      { label: "Gallon of gas",    from: 2.72,  to: 3.45,  fmt: "usd" },
-      { label: "Movie ticket",     from: 7.89,  to: 15.00, fmt: "usd" },
+      { label: "Gallon of gas",    from: 2.72,  to: 3.75,  fmt: "usd" },
+      { label: "Movie ticket",     from: 7.89,  to: 17.00, fmt: "usd" },
       { label: "A Big Mac",        from: 3.73,  to: 6.49,  fmt: "usd" },
       { label: "One Bitcoin",      from: 0.01,  to: 63000, fmt: "usd0", thenText: "≈ 1¢", note: "$100 of it that week could be worth $126M to $790M today." },
       { label: "India's population",   from: 1234000000, to: 1463000000, fmt: "compact" },
-      { label: "Morocco's population", from: 32000000,   to: 37000000,   fmt: "compact" }
+      { label: "Morocco's population", from: 32000000,   to: 38800000,   fmt: "compact" }
     ]
   },
 
