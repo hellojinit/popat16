@@ -572,6 +572,7 @@ a { color: inherit; }
 .alive-stat:first-child .alive-num { background: linear-gradient(120deg, var(--accent), var(--accent-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .alive-label { display: block; margin-top: var(--s3); color: var(--text-lo); font-size: .74rem; letter-spacing: .12em; text-transform: uppercase; }
 .alive-note { text-align: center; color: var(--text-lo); margin-top: var(--s5); font-style: italic; font-size: .9rem; }
+.alive-fact { max-width: 640px; margin: var(--s5) auto 0; }
 
 /* video embeds */
 .video { --reveal-y: 26px; max-width: 720px; margin: var(--s7) auto 0; }

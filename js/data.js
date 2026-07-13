@@ -21,7 +21,6 @@ window.DATA = {
   day: {
     kicker: "The day you arrived",
     title: "Tuesday.",
-    lead: "Arlington, Virginia. 7:15 in the evening, sun still up — a warm, sticky Tuesday. And then there was you.",
     weather: {
       high: 86, low: 73,
       meta: [["At 7:15 pm", "85°F"], ["Feels like", "92°F"], ["Sunset", "8:34 pm"]],
@@ -39,7 +38,8 @@ window.DATA = {
   alive: {
     kicker: "Every second counts",
     title: "You've been alive for...",
-    note: "You crossed 500 million seconds a couple months ago. Here's to billions more..."
+    note: "You crossed 500 million seconds a couple months ago. Here's to billions more...",
+    card: { emoji: "🦖", tag: "Throwback", title: "Dinosaur fun fact", text: "A T. rex only lived about 28 years — so at 16, in rex years, you're basically a responsible adult." }
   },
 
   worldcup: {
@@ -147,7 +147,7 @@ window.DATA = {
       { emoji: "📱", tag: "19 days old", title: "iPhone 4", text: "$199, the first Retina screen, brand new FaceTime. The original iPad was barely three months old." },
       { emoji: "🕵️", tag: "On TV that night", title: "Crime night on USA", text: "July 13, 2010 was a huge night on USA Network — the home of Monk. Hours after you were born, they premiered White Collar's new season and the very first Covert Affairs, back to back. Monk had cracked his final case just seven months earlier, in the most-watched drama in cable history at the time." },
       { emoji: "🏙️", tag: "Six months before you", title: "The tallest tower ever", text: "In January 2010, Dubai opened the Burj Khalifa — 828 metres, over half a mile tall. Sixteen years later, nothing on Earth has topped it. It's been the tallest building in the world for your entire life." },
-      { emoji: "🚫", tag: "Didn't exist yet", title: "Instagram", text: "It launched three months after you did. No Snapchat, no TikTok, no Fortnite." },
+      { emoji: "🚫", tag: "Didn't exist yet", title: "Instagram", text: "It launched three months after you did. No Snapchat, no TikTok, no Fortnite, no Pokemon Go." },
       { emoji: "🌐", tag: "Online", title: "Facebook: 500M", text: "About to cross half a billion users, while Justin Bieber's “Baby” became the most viewed video on YouTube." },
       { emoji: "⛏️", tag: "Gaming", title: "Minecraft, $13", text: "Still a rough alpha built by one guy. Angry Birds was the game everyone had on their phone." },
       { emoji: "🎮", tag: "Consoles", title: "Xbox 360 & PS3", text: "The consoles to have, with Kinect arriving that November. The PS5 was still ten years away." }
@@ -193,8 +193,7 @@ window.DATA = {
     lead: "Old enough to drive, young enough to still get grounded. Here's to year sixteen.",
     cards: [
       { emoji: "🚗", tag: "New this year", title: "You're learning to drive", text: "Somewhere in Lorton, a steering wheel is sweating. The roads of Northern Virginia will never be the same, and godspeed to every other driver out there." },
-      { emoji: "🎉", tag: "Countdown", title: "3 years to go", text: "Only three more years until you've officially, medically beaten teen pregnancy. We're all rooting for you. Stay strong. 🙏" },
-      { emoji: "🦖", tag: "Throwback", title: "Dinosaur fun fact", text: "A T. rex only lived about 28 years — so at 16, in rex years, you're basically a responsible adult. Rawr." }
+      { emoji: "🎉", tag: "Countdown", title: "3 years to go", text: "Only three more years until you've officially, medically beaten teen pregnancy. We're all rooting for you. Stay strong. 🙏" }
     ]
   },
 

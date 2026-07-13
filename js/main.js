@@ -241,6 +241,14 @@
       '<div class="alive-stat" data-reveal><span class="alive-num" id="alive-mins">0</span><span class="alive-label">minutes alive</span></div>' +
       '<div class="alive-stat" data-reveal style="--i:1"><span class="alive-num" id="alive-secs">0</span><span class="alive-label">seconds alive</span></div>' +
       '</div><p class="alive-note" data-reveal style="--i:2">' + a.note + '</p>';
+    if (a.card) {
+      var c = a.card;
+      body += '<div class="alive-fact" data-reveal style="--i:3">' +
+        '<article class="chip sweet-card">' +
+          '<span class="chip-emoji" aria-hidden="true">' + c.emoji + '</span>' +
+          '<div><p class="pop-tag">' + c.tag + '</p><p class="chip-title">' + c.title + '</p><p class="chip-text">' + c.text + '</p></div>' +
+        '</article></div>';
+    }
     set("alive", head("alive", a, body) + "</div>");
   }
 
