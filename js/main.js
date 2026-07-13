@@ -374,18 +374,20 @@
     }
     strip.innerHTML = rows;
   }
-  function runOdometer() {
+  function runOdometer(delay) {
     if (!motionOK || !strip) return;
     buildStrip();
     strip.classList.remove("run");
     strip.style.transform = "translateY(0)";
     void strip.offsetHeight;
-    requestAnimationFrame(function () {
-      strip.classList.add("run");
-      strip.style.transform = "translateY(-16em)";
-    });
+    setTimeout(function () {
+      requestAnimationFrame(function () {
+        strip.classList.add("run");
+        strip.style.transform = "translateY(-16em)";
+      });
+    }, delay || 0);
   }
-  runOdometer();
+  runOdometer(1000);
   if (motionOK) setTimeout(function () { launchConfetti(200, 1); launchFireworks(2); }, 900);
 
   /* ---------- confetti ---------- */
@@ -534,7 +536,7 @@
         showToast(D.finale.eggToast);
         if (cc) cc.textContent = D.finale.cakeHint;
       } else if (cc) {
-        cc.textContent = window._taps >= 8 ? window._taps + " / 16" : D.finale.cakeHint;
+        cc.textContent = window._taps >= 2 ? window._taps + " / 16" : D.finale.cakeHint;
       }
     }
   });

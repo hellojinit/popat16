@@ -143,6 +143,7 @@ window.DATA = {
       { emoji: "🍌", tag: "#1 movie", title: "Despicable Me", text: "It opened four days before you were born and made $56M that weekend. The Minions are basically your age." },
       { emoji: "🎬", tag: "In theaters", title: "Summer 2010", text: "Twilight: Eclipse, Toy Story 3, and Inception, out three days after you. Avatar was still the biggest film ever made." },
       { emoji: "📱", tag: "19 days old", title: "iPhone 4", text: "$199, the first Retina screen, brand new FaceTime. The original iPad was barely three months old." },
+      { emoji: "🕵️", tag: "On TV that night", title: "Crime night on USA", text: "July 13, 2010 was a huge night on USA Network — the home of Monk. Hours after you were born, they premiered White Collar's new season and the very first Covert Affairs, back to back. Monk had cracked his final case just seven months earlier, in the most-watched drama in cable history at the time." },
       { emoji: "🚫", tag: "Didn't exist yet", title: "Instagram", text: "It launched three months after you did. No Snapchat, no TikTok, no Fortnite." },
       { emoji: "🌐", tag: "Online", title: "Facebook: 500M", text: "About to cross half a billion users, while Justin Bieber's “Baby” became the most viewed video on YouTube." },
       { emoji: "⛏️", tag: "Gaming", title: "Minecraft, $13", text: "Still a rough alpha built by one guy. Angry Birds was the game everyone had on their phone." },
@@ -210,13 +211,13 @@ window.DATA = {
       "Messi is still playing.",
       "Barça is still Barça.",
       "The Saints are still who dat.",
-      "The best summers are still World Cup summers.",
-      { html: "Morocco is <span class=\"grad\">still climbing.</span>" }
+      "The best summers are still the ones with your birthday.",
+      { html: "US, Morocco, India and all your teams are <span class=\"grad\">still climbing.</span>" }
     ],
     message: "Keep growing, keep smiling. Happy birthday, {NICK}!",
     replay: "Replay the rewind",
-    cakeHint: "psst, tap the cake",
-    eggToast: "🎉 You found the secret. Year 16 wins everything.",
+    cakeHint: "Don't crush the cake",
+    eggToast: "🎉 So u still don't listen. What happened to being wise?",
     footer: "Made with love for your 16th. 🎂⚽⚜️"
   }
 };

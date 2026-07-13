@@ -675,9 +675,9 @@ body::after {
   padding-block: clamp(4rem, 12vh, 6rem);
 }
 .hero-kicker { color: var(--gold); }
-.odo-line { text-align: center; line-height: 1; }
+.odo-line { display: grid; justify-items: center; gap: calc(var(--t-hero) * .05); }
 .odo-prefix {
-  display: inline-block; vertical-align: baseline; font-size: calc(var(--t-hero) * .42);
+  display: inline-block; vertical-align: baseline; font-size: var(--t-hero);
   font-family: var(--font-display); font-weight: 700; letter-spacing: -.01em;
   background: linear-gradient(180deg, #fff 30%, var(--gold) 130%);
   -webkit-background-clip: text; background-clip: text; color: transparent;
