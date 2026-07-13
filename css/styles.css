@@ -134,20 +134,13 @@ a { color: inherit; }
     radial-gradient(80% 50% at 30% 88%,  rgba(47,212,138,.08), transparent 62%),
     linear-gradient(180deg, var(--bg-0) 0%, #080C17 45%, var(--bg-0) 100%);
 }
-/* Pin the very top and bottom of the viewport to exactly --bg-0 so iOS Safari's
-   status bar and toolbar — both filled with theme-color — meet the page seamlessly.
-   These sit above the sections (whose glow orbs scroll past the edges) but below
-   the menu (z 60+). */
-body::before, body::after {
-  content: ""; position: fixed; left: 0; right: 0; z-index: 39; pointer-events: none;
-}
+/* Pin the very top of the viewport to exactly --bg-0 so iOS Safari's status bar —
+   filled with theme-color — meets the page seamlessly. Sits above the sections
+   (whose glow orbs scroll past the edges) but below the menu (z 60+). */
 body::before {
-  top: 0; height: calc(env(safe-area-inset-top, 0px) + 56px);
+  content: ""; position: fixed; left: 0; right: 0; top: 0; z-index: 39; pointer-events: none;
+  height: calc(env(safe-area-inset-top, 0px) + 56px);
   background: linear-gradient(180deg, var(--bg-0) 0%, var(--bg-0) 34%, var(--bg-0-0) 100%);
-}
-body::after {
-  bottom: 0; height: calc(env(safe-area-inset-bottom, 0px) + 56px);
-  background: linear-gradient(0deg, var(--bg-0) 0%, var(--bg-0) 34%, var(--bg-0-0) 100%);
 }
 
 /* ---------- Typography ---------- */

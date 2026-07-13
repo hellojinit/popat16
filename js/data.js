@@ -131,8 +131,8 @@ window.DATA = {
       { label: "Movie ticket",     from: 7.89,  to: 15.00, fmt: "usd" },
       { label: "A Big Mac",        from: 3.73,  to: 6.49,  fmt: "usd" },
       { label: "One Bitcoin",      from: 0.01,  to: 63000, fmt: "usd0", thenText: "≈ 1¢", note: "$100 of it that week could be worth $126M to $790M today." },
-      { label: "India's population",   from: 1234000000, to: 1463000000, fmt: "compact", note: "In 2023 India passed China to become the most populous country on Earth — #2 when you were born, #1 today." },
-      { label: "Morocco's population", from: 32000000,   to: 37000000,   fmt: "compact", note: "About 5 million more Moroccans than the year you were born." }
+      { label: "India's population",   from: 1234000000, to: 1463000000, fmt: "compact" },
+      { label: "Morocco's population", from: 32000000,   to: 37000000,   fmt: "compact" }
     ]
   },
 
@@ -221,7 +221,7 @@ window.DATA = {
     message: "Keep growing, keep smiling. Happy birthday, {NICK}!",
     replay: "Replay the rewind",
     cakeHint: "Don't crush the cake",
-    eggToast: "🎉 So u still don't listen. What happened to being wise?",
+    eggToast: "🎉 So u still don't listen? What happened to being wise?",
     footer: "Made with love for your 16th. 🎂⚽⚜️"
   }
 };
