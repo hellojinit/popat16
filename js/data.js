@@ -20,7 +20,7 @@ window.DATA = {
 
   day: {
     kicker: "The day you arrived",
-    title: "Tuesday, July 13, 2010.",
+    title: "Tuesday.",
     lead: "Arlington, Virginia. 7:15 in the evening, sun still up — a warm, sticky Tuesday. And then there was you.",
     weather: {
       high: 86, low: 73,
@@ -39,7 +39,7 @@ window.DATA = {
   alive: {
     kicker: "Every second counts",
     title: "You've been alive for...",
-    note: "and counting, one second at a time."
+    note: "You crossed 500 million seconds a couple months ago. Here's to billions more..."
   },
 
   worldcup: {
@@ -116,7 +116,7 @@ window.DATA = {
       { mark: "74", html: "<b>Tracy Porter</b> jumped Manning's pass and took it 74 yards the other way to seal it." }
     ],
     video: { id: "P0zuCOfcSjc", title: "Super Bowl XLIV highlights", caption: "Saints 31-17 Colts. The whole ride, in a few minutes." },
-    joke: "One small catch: they won it five months before you showed up, and haven't won a single one since. Every year of your life — nothing. Coincidence? 💀 (There's still time to switch teams. Just saying.)"
+    joke: "We all know they've been shit ever since, so it's not too late to switch it up. You're only 16, and I hear the Cowboys are hiring. 💀"
   },
 
   numbers: {
@@ -190,7 +190,7 @@ window.DATA = {
     cards: [
       { emoji: "🚗", tag: "New this year", title: "You're learning to drive", text: "Somewhere in Lorton, a steering wheel is sweating. The roads of Northern Virginia will never be the same, and godspeed to every other driver out there." },
       { emoji: "🎉", tag: "Countdown", title: "3 years to go", text: "Only three more years until you've officially, medically beaten teen pregnancy. We're all rooting for you. Stay strong. 🙏" },
-      { emoji: "🦖", tag: "Throwback", title: "Your dinosaur era", text: "You used to be obsessed with dinosaurs. A T. rex only lived about 28 years — so at 16, in rex years, you're basically a responsible adult. Rawr." }
+      { emoji: "🦖", tag: "Throwback", title: "Dinosaur fun fact", text: "A T. rex only lived about 28 years — so at 16, in rex years, you're basically a responsible adult. Rawr." }
     ]
   },
 
@@ -211,10 +211,9 @@ window.DATA = {
       "Barça is still Barça.",
       "The Saints are still who dat.",
       "The best summers are still World Cup summers.",
-      { html: "Morocco is <span class=\"grad\">still climbing.</span>" },
-      { html: "And <b>Zain</b> is still growing, still learning, and getting a little wiser with every second that ticks by." }
+      { html: "Morocco is <span class=\"grad\">still climbing.</span>" }
     ],
-    message: "Keep living, keep smiling. Happy birthday, {NICK}!",
+    message: "Keep growing, keep smiling. Happy birthday, {NICK}!",
     replay: "Replay the rewind",
     cakeHint: "psst, tap the cake",
     eggToast: "🎉 You found the secret. Year 16 wins everything.",

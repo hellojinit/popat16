@@ -355,17 +355,17 @@ body::after {
 .match { --reveal-y: 26px; }
 .match-label { color: var(--accent); }
 .score-row {
-  display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
-  gap: var(--s3); margin: var(--s5) 0;
+  display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center;
+  gap: var(--s2); margin: var(--s5) 0;
 }
-.score-team { font-family: var(--font-display); font-weight: 700; color: var(--text-hi); font-size: 1.05rem; }
+.score-team { font-family: var(--font-display); font-weight: 700; color: var(--text-hi); font-size: clamp(.9rem, 2.6vw, 1.05rem); min-width: 0; }
 .score-team.away { text-align: right; }
 .score-box {
-  font-family: var(--font-display); font-weight: 700; font-size: clamp(1.4rem, 5.4vw, 2.1rem);
+  font-family: var(--font-display); font-weight: 700; font-size: clamp(1.25rem, 4.6vw, 1.85rem);
   color: var(--text-hi);
   background: linear-gradient(180deg, rgba(255,255,255,.1), rgba(255,255,255,.04));
   border: 1px solid var(--stroke-hi);
-  border-radius: 12px; padding: .1em .45em; letter-spacing: .04em; font-variant-numeric: tabular-nums;
+  border-radius: 12px; padding: .1em .4em; letter-spacing: .02em; font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
 .scorers { display: flex; flex-wrap: wrap; gap: var(--s2) var(--s4); color: var(--text-lo); font-size: .82rem; }
