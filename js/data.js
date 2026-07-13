@@ -192,7 +192,7 @@ window.DATA = {
     title: "What 16 unlocks.",
     lead: "Old enough to drive, young enough to still get grounded. Here's to year sixteen.",
     cards: [
-      { emoji: "🚗", tag: "New this year", title: "You're learning to drive", text: "Somewhere in Lorton, a steering wheel is sweating. The roads of Northern Virginia will never be the same, and godspeed to every other driver out there." },
+      { emoji: "🚗", tag: "New this year", title: "You're learning to drive", text: "Remember: speed limits only apply when there's a cop nearby. You already paid for the whole speedometer, not just the left half." },
       { emoji: "🎉", tag: "Countdown", title: "3 years to go", text: "Only three more years until you've officially, medically beaten teen pregnancy. We're all rooting for you. Stay strong. 🙏" }
     ]
   },
