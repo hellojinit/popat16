@@ -1,7 +1,7 @@
 /* ============================================================
    The World the Day You Arrived — 16th birthday time machine
-   Order: fonts → tokens → reset → type → layout → chrome (nav,
-          progress) → components → hero → motion → media queries
+   Order: fonts → tokens → reset → type → layout → chrome (nav) →
+          components → hero → motion → media queries
    ============================================================ */
 
 /* ---------- Fonts (self-hosted, latin subset) ---------- */
@@ -137,7 +137,7 @@ a { color: inherit; }
 /* Pin the very top and bottom of the viewport to exactly --bg-0 so iOS Safari's
    status bar and toolbar — both filled with theme-color — meet the page seamlessly.
    These sit above the sections (whose glow orbs scroll past the edges) but below
-   the progress bar (z 40) and the menu (z 60+). */
+   the menu (z 60+). */
 body::before, body::after {
   content: ""; position: fixed; left: 0; right: 0; z-index: 39; pointer-events: none;
 }
@@ -200,19 +200,6 @@ body::after {
           mask-image: linear-gradient(180deg, #000 0%, rgba(0,0,0,.4) 55%, transparent 100%);
 }
 .section > * { position: relative; z-index: 1; }
-
-/* scroll-progress bar — down the right edge, clear of the browser's top chrome */
-.progress {
-  position: fixed; z-index: 40; pointer-events: none;
-  top: calc(env(safe-area-inset-top, 0px) + 8px);
-  bottom: calc(env(safe-area-inset-bottom, 0px) + 8px);
-  right: 3px; width: 3px; border-radius: 3px;
-  transform: scaleY(0); transform-origin: 50% 0;
-  background: linear-gradient(180deg, var(--gold), var(--party-pink), var(--party-purple), var(--party-cyan), var(--mar-green));
-  /* own compositing layer so the fixed bar never repaints mid-scroll */
-  will-change: transform;
-  backface-visibility: hidden;
-}
 
 /* ---------- Jump menu ---------- */
 .nav-toggle {
@@ -306,6 +293,7 @@ body::after {
   background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.022));
   border: 1px solid var(--stroke);
   border-radius: var(--radius);
+  overflow: hidden;
   padding: var(--s5);
   box-shadow: inset 0 1px 0 rgba(255,255,255,.07), 0 12px 34px rgba(0,0,0,.22);
 }
@@ -687,7 +675,14 @@ body::after {
   padding-block: clamp(4rem, 12vh, 6rem);
 }
 .hero-kicker { color: var(--gold); }
-.odo { font-size: var(--t-hero); height: 1em; line-height: 1; overflow: hidden; }
+.odo-line { text-align: center; line-height: 1; }
+.odo-prefix {
+  display: inline-block; vertical-align: baseline; font-size: calc(var(--t-hero) * .42);
+  font-family: var(--font-display); font-weight: 700; letter-spacing: -.01em;
+  background: linear-gradient(180deg, #fff 30%, var(--gold) 130%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.odo { display: inline-block; vertical-align: baseline; font-size: var(--t-hero); height: 1em; line-height: 1; overflow: hidden; }
 .odo-strip { display: flex; flex-direction: column; transform: translateY(0); will-change: transform; }
 .odo-year {
   height: 1em; line-height: 1; display: flex; align-items: center; justify-content: center;
@@ -776,10 +771,6 @@ body::after {
 
 /* ---------- Progressive scroll-driven decoration ---------- */
 @media (prefers-reduced-motion: no-preference) {
-  @supports (animation-timeline: scroll()) {
-    .progress { animation: grow-y linear; animation-timeline: scroll(root); }
-    @keyframes grow-y { to { transform: scaleY(1); } }
-  }
   @supports (animation-timeline: view()) {
     .section::before { animation: orb-drift linear both; animation-timeline: view(); animation-range: entry 0% exit 100%; }
     @keyframes orb-drift { from { translate: -50% -6%; } to { translate: -50% 10%; } }

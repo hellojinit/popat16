@@ -11,82 +11,64 @@ window.DATA = {
   nickname: "Popat",
   /* ▲▲ appears in "Happy 16th, ___" (hero) and the closing line ▲▲ */
 
-  /* ══════════════════════════════════════════════════════════
-     THE ONE THING TO UPDATE — France vs Morocco quarterfinal
-     Kicks off Thursday, July 9, 2026 (4pm ET). After it ends, set:
-       played: true
-       result: "Morocco 1-0 France"      (final score, Morocco first)
-       note:   pick the matching line and paste it in:
-         WIN  -> "Into the semifinals. They play July 14, the day after your birthday. 🇲🇦"
-         LOSS -> "It ends in the last eight, but they're 7th in the world and still climbing."
-         PENS -> "Decided on penalties again. What a way to spend your birthday week."
-     Then re-deploy. That's the only edit game-day needs.
-     ══════════════════════════════════════════════════════════ */
-  moroccoQF: {
-    played: false,
-    result: "",
-    note: ""
-  },
-
   hero: {
-    kicker: "July 13, 2026 · you're 16",
-    headline: "Happy 16th, {NAME}.",
-    sub: "Some fun facts, and how the world looked the day you were born. Tuesday, July 13, 2010.",
+    kicker: "Time capsule to",
+    headline: "Happy 16th, {NAME}!",
+    sub: "A few fun facts — and a look at the world you were born into. Tuesday, July 13, 2010.",
     cta: "Scroll down to explore"
   },
 
   day: {
     kicker: "The day you arrived",
     title: "Tuesday, July 13, 2010.",
-    lead: "Arlington, Virginia. 7:15 in the evening, sun still up. A warm, sticky Tuesday — and the start of everything.",
+    lead: "Arlington, Virginia. 7:15 in the evening, sun still up — a warm, sticky Tuesday. And then there was you.",
     weather: {
       high: 86, low: 73,
       meta: [["At 7:15 pm", "85°F"], ["Feels like", "92°F"], ["Sunset", "8:34 pm"]],
-      story: "Days earlier, Reagan National — right there in Arlington — hit 102°F. Twice. By the 13th the heat wave had broken, so you got a warm, partly cloudy evening to show up to.",
-      forecast: "Sixteen years later, your birthday looks almost identical: about 85°F, humid, a little haze."
+      story: "A few days earlier, Reagan National — right there in Arlington — hit 102°F. Twice. But the heat wave broke just in time, so you got a warm, partly cloudy evening to arrive to.",
+      forecast: "Sixteen years on, your birthday looks almost exactly the same: about 85°F, humid, a little hazy."
     },
     chips: [
-      { emoji: "🌇", title: "7:15 in the evening", text: "You showed up an hour and a half before sunset, the sky over Northern Virginia still gold." },
-      { emoji: "⚾", title: "On your actual birthday", text: "In Anaheim, the National League won the MLB All-Star Game 3-1 — their first win in 14 years, on your birthday." },
-      { emoji: "🛰️", title: "Three days before", text: "Europe's Rosetta spacecraft flew past an asteroid called Lutetia, 280 million miles out, and sent back the closest photos anyone had ever taken." },
-      { emoji: "🕵️", title: "That week", text: "The U.S. and Russia swapped 14 spies on a runway in Vienna, the biggest exchange since the Cold War. Days earlier, LeBron took his talents to South Beach." }
+      { emoji: "🌇", title: "7:15 in the evening", text: "You arrived an hour and a half before sunset, with the sky over Northern Virginia still gold." },
+      { emoji: "⚾", title: "On your actual birthday", text: "Out in Anaheim, the National League finally won the MLB All-Star Game 3-1 — their first win in 14 years." },
+      { emoji: "🛰️", title: "Three days before", text: "Europe's Rosetta spacecraft slipped past an asteroid called Lutetia, 280 million miles away, and sent home the closest photos anyone had ever taken." },
+      { emoji: "🕵️", title: "That week", text: "The U.S. and Russia swapped 14 spies on a runway in Vienna — the biggest exchange since the Cold War. And a few days earlier, LeBron took his talents to South Beach." }
     ]
   },
 
   alive: {
     kicker: "Every second counts",
     title: "You've been alive for...",
-    lead: "You arrived at exactly 7:15 in the evening. The clock hasn't stopped once since.",
     note: "and counting, one second at a time."
   },
 
   worldcup: {
     kicker: "48 hours before you arrived",
     title: "The world crowned a champion.",
-    lead: "The 2010 World Cup final was played in Johannesburg on July 11, two days before you were born. And your Barça were all over it.",
+    lead: "The 2010 World Cup final was played in Johannesburg on July 11, two days before you were born — and Barça were all over it.",
     final: {
       label: "July 11 · the final",
       home: "Spain", away: "Netherlands", score: "1-0", detail: "Iniesta, 116'",
-      kicker: "Seven of Spain's eleven starters were Barça: Piqué, Puyol, Busquets, Xavi, Iniesta, Pedro and Villa. Your club basically won the whole thing."
+      kicker: "Seven of Spain's eleven starters were Barça: Piqué, Puyol, Busquets, Xavi, Iniesta, Pedro and Villa. So really, Barça won the whole thing."
     },
     thirdPlace: {
       label: "July 10 · third-place match",
       home: "Germany", away: "Uruguay", score: "3-2", venue: "Port Elizabeth",
       scorers: ["Müller 19'", "Cavani 28'", "Forlán 51'", "Jansen 56'", "Khedira 82'"],
-      kicker: "With the last kick of the game, Forlán's free kick hit the crossbar. Inches from extra time."
+      kicker: "On the last kick of the game, Forlán's free kick smacked the crossbar. Inches from extra time."
     },
     video: { id: "3pCPQDxZzfY", title: "Iniesta's World Cup-winning goal", caption: "The goal that won it all, the week you were born." },
     usa: {
       label: "🇺🇸 And your country had its moment",
-      text: "Three weeks before you were born, <b>Landon Donovan</b> scored in the 91st minute against Algeria. It's still the most famous goal in U.S. soccer history. It won the group — ahead of England, no less — and the whole country lost its mind.",
+      text: "Three weeks before you were born, <b>Landon Donovan</b> scored in the 91st minute against Algeria. It's still the most famous goal in U.S. soccer history — it won the group ahead of England, of all teams, and the whole country went absolutely nuts.",
       video: { id: "dd-jAOtj5Xw", start: 150, title: "Donovan's 91st-minute winner vs Algeria", caption: "“Go, go, USA!” Three weeks before you showed up." }
     }
   },
 
   barca: {
-    kicker: "Your Barça, summer 2010",
+    kicker: "Barça, summer 2010",
     title: "The greatest team on Earth.",
-    lead: "The week you were born, this was the best football team on the planet. Reigning Spanish champions, coached by Pep Guardiola.",
+    lead: "The week you were born, this was the best football team on the planet — reigning Spanish champions, with Pep Guardiola on the touchline.",
     formationLabel: "2010-11 · 4-3-3",
     players: [
       { n: 1,  name: "Valdés",   x: 34, y: 96 },
@@ -108,33 +90,33 @@ window.DATA = {
         { pos: 2, team: "Real Madrid",  pts: 96 },
         { pos: 3, team: "Valencia",     pts: 71 }
       ],
-      note: "Champions of Spain with a record 99 points, three clear of Real Madrid. The next season they did it again — and won the Champions League at Wembley."
+      note: "Champions of Spain with a record 99 points, three clear of Real Madrid. Then they went and did it all again the next season — and won the Champions League at Wembley."
     },
     facts: [
-      { mark: "10", html: "That number <b>10</b> was 23 years old, with exactly <b>one</b> Ballon d'Or at the time. He has <b>eight</b> now. Nobody else has more than five." },
-      { mark: "€40M", html: "David Villa had just signed for <b>€40 million</b>. He arrived a few days after you did, right in time to win everything." },
-      { mark: "↔", html: "That same week, <b>Yaya Touré</b> was sold to Man City, <b>Ibrahimović</b> was still in the squad, and Adriano signed on." },
-      { mark: "🏆", html: "Before your first birthday, this team won the <b>Champions League</b> at Wembley, 3-1 over Manchester United. Pedro, Messi and Villa scored." }
+      { mark: "10", html: "That number <b>10</b> was just 23, with exactly <b>one</b> Ballon d'Or to his name back then. He's got <b>eight</b> now — and nobody else has more than five." },
+      { mark: "€40M", html: "David Villa had just signed for <b>€40 million</b>. He turned up a few days after you did — just in time to win everything." },
+      { mark: "↔", html: "That same week, <b>Yaya Touré</b> was off to Man City, <b>Ibrahimović</b> was still around the squad, and Adriano had just signed on." },
+      { mark: "🏆", html: "Before you'd even turned one, this team won the <b>Champions League</b> at Wembley, 3-1 over Manchester United — Pedro, Messi and Villa all scored." }
     ]
   },
 
   saints: {
     kicker: "Who Dat!",
-    title: "Your Saints ruled the world.",
-    lead: "Five months before you were born, New Orleans won the first Super Bowl in franchise history. A city still rebuilding after Katrina got to dance in the streets again.",
+    title: "The Saints were on top of the world.",
+    lead: "Five months before you were born, New Orleans won the first Super Bowl in franchise history. A city still putting itself back together after Katrina got to dance in the streets again.",
     game: {
       label: "Super Bowl XLIV · Feb 7, 2010 · Miami",
       home: "Saints", away: "Colts", score: "31-17", icon: "🏈",
       scorers: ["Brees, Super Bowl MVP", "Payton's onside kick", "Porter 74-yd pick-six"],
-      kicker: "The underdogs beat Peyton Manning's Colts. So for the whole first year of your life, the Saints were champions of the NFL."
+      kicker: "The underdogs beat Peyton Manning's Colts. So for the entire first year of your life, the Saints were the best team in the NFL."
     },
     facts: [
       { mark: "9", html: "<b>Drew Brees</b> tied a Super Bowl record with 32 completions and was named MVP." },
-      { mark: "⚡", html: "Coach <b>Sean Payton</b> opened the second half with a surprise onside kick they called “Ambush.”" },
+      { mark: "⚡", html: "Coach <b>Sean Payton</b> came out for the second half and called a surprise onside kick — nicknamed “Ambush.”" },
       { mark: "74", html: "<b>Tracy Porter</b> jumped Manning's pass and took it 74 yards the other way to seal it." }
     ],
     video: { id: "P0zuCOfcSjc", title: "Super Bowl XLIV highlights", caption: "Saints 31-17 Colts. The whole ride, in a few minutes." },
-    joke: "One catch. They won it five months before you showed up, and haven't won one since. Every single year of your life, nothing. Coincidence? 💀 (There's still time to switch teams. Just saying.)"
+    joke: "One small catch: they won it five months before you showed up, and haven't won a single one since. Every year of your life — nothing. Coincidence? 💀 (There's still time to switch teams. Just saying.)"
   },
 
   numbers: {
@@ -164,23 +146,22 @@ window.DATA = {
       { emoji: "🚫", tag: "Didn't exist yet", title: "Instagram", text: "It launched three months after you did. No Snapchat, no TikTok, no Fortnite." },
       { emoji: "🌐", tag: "Online", title: "Facebook: 500M", text: "About to cross half a billion users, while Justin Bieber's “Baby” became the most viewed video on YouTube." },
       { emoji: "⛏️", tag: "Gaming", title: "Minecraft, $13", text: "Still a rough alpha built by one guy. Angry Birds was the game everyone had on their phone." },
-      { emoji: "🎮", tag: "Consoles", title: "Xbox 360 & PS3", text: "The consoles to have, with Kinect arriving that November. The PS5 was still ten years away." },
-      { emoji: "📼", tag: "The old world", title: "Blockbuster was open", text: "Netflix mostly mailed you DVDs." }
+      { emoji: "🎮", tag: "Consoles", title: "Xbox 360 & PS3", text: "The consoles to have, with Kinect arriving that November. The PS5 was still ten years away." }
     ]
   },
 
   climb: {
-    kicker: "Your Atlas Lions",
+    kicker: "The Atlas Lions",
     title: "The climb.",
-    lead: "The summer you were born, Moroccan football was at rock bottom. What happened next is one of the best stories in sport — and it's still being written.",
+    lead: "The summer you were born, Moroccan football was at rock bottom. What happened next is one of the best stories in football — and it's not finished yet.",
     rank: { from: 82, to: 7, cap: "FIFA world ranking", label: "all-time high of 5th, June 2026" },
     steps: [
-      { year: "July 2010", title: "Rock bottom", text: "FIFA rank <b>82nd</b>, the worst in Morocco's history. They'd just missed the World Cup, finishing last in qualifying. A week before you were born, they hired a new coach to fix it." },
-      { year: "2010", title: "The old guard", text: "Chamakh had just joined Arsenal. Taarabt was the maverick. Boussoufa was winning Belgium's Golden Shoe. Good players, but not a team yet." },
-      { year: "Meanwhile…", title: "The future was in school", text: "The day you were born, <b>Hakimi was 11</b>. Ounahi was 10. En-Nesyri and Amrabat were 13. Nobody had heard of them. They were just kids, like you." },
-      { year: "2022", title: "The mountain", text: "Morocco became the <b>first African and Arab team ever</b> to reach a World Cup semifinal. Belgium, Spain, Portugal — all beaten. Fourth in the world." },
+      { year: "July 2010", title: "Rock bottom", text: "FIFA rank <b>82nd</b> — the worst in Morocco's history. They'd just missed the World Cup, dead last in their qualifying group. A week before you were born, they brought in a new coach to sort it out." },
+      { year: "2010", title: "The old guard", text: "Chamakh had just signed for Arsenal. Taarabt was the maverick. Boussoufa was winning Belgium's Golden Shoe. Good players — just not a team yet." },
+      { year: "Meanwhile…", title: "The future was in school", text: "The day you were born, <b>Hakimi was 11</b>. Ounahi was 10. En-Nesyri and Amrabat were 13. Nobody had heard of any of them yet. Just kids — like you." },
+      { year: "2022", title: "The mountain", text: "Morocco became the <b>first African and Arab team ever</b> to reach a World Cup semifinal. Belgium, Spain, Portugal — all sent home. Fourth in the world." },
       { year: "2025", title: "Kings of Africa", text: "Champions of the Africa Cup of Nations, at home, in front of their own people." },
-      { year: "Today", title: "Top ten on Earth", text: "16 years after rock bottom, Morocco sits <b>7th in the world</b>. And that little kid Ounahi? He just scored twice in a World Cup knockout." }
+      { year: "Today", title: "Top ten on Earth", text: "Sixteen years after rock bottom, Morocco sits <b>7th in the world</b>. And that little kid Ounahi? He just scored twice in a World Cup knockout game." }
     ],
     video: { id: "op4mGRTAlEY", title: "Morocco 1-0 Portugal, 2022", caption: "The night Morocco made history and reached a World Cup semifinal." }
   },
@@ -188,24 +169,8 @@ window.DATA = {
   fullcircle: {
     kicker: "Right now",
     title: "You turn 16 during a World Cup.",
-    lead: "You were born two days after one of these ended. Sixteen years later, you turn 16 in the middle of the next one — and Morocco is one of the last eight standing.",
-    runLabel: "Morocco's run, summer 2026",
-    run: [
-      { txt: "Brazil 1-1", plain: true },
-      { txt: "Scotland 1-0", win: true },
-      { txt: "Haiti 4-2", win: true },
-      { txt: "Netherlands 1-1 (3-2 pens)", win: true },
-      { txt: "Canada 3-0", win: true }
-    ],
-    runNote: "They knocked out the <b>Netherlands</b> on penalties to reach the last 16. Same team Spain beat in the final the week you were born. Full circle.",
-    match: {
-      comp: "2026 World Cup · Quarterfinal",
-      home: "Morocco", away: "France",
-      dateText: "Thursday, July 9",
-      upcoming: "If they win, Morocco play a World Cup semifinal on July 14, the day after you turn 16.",
-      tag: "A rematch of the 2022 semifinal, and this time the whole world is watching."
-    },
-    coda: "You share a birthday with Barcelona's teen superstar. <b>Lamine Yamal</b> was born on July 13, 2007 — the same day as you, three years earlier. When you turn 16, he turns 19.",
+    lead: "You were born two days after one World Cup ended. Sixteen years later, you turn 16 right in the middle of the next one.",
+    coda: "You share a birthday with Barcelona's teenage superstar. <b>Lamine Yamal</b> was born on July 13, 2007 — same day as you, just three years earlier. The day you turn 16, he turns 19.",
     twins: {
       label: "And you're in good company. A few other July 13 birthdays:",
       people: [
@@ -247,7 +212,7 @@ window.DATA = {
       "The Saints are still who dat.",
       "The best summers are still World Cup summers.",
       { html: "Morocco is <span class=\"grad\">still climbing.</span>" },
-      { html: "And <b>Zain</b> is still growing, still learning, and getting a little wiser with every second that passes." }
+      { html: "And <b>Zain</b> is still growing, still learning, and getting a little wiser with every second that ticks by." }
     ],
     message: "Keep living, keep smiling. Happy birthday, {NICK}!",
     replay: "Replay the rewind",

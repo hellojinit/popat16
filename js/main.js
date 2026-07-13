@@ -51,7 +51,7 @@
     var meta = w.meta.map(function (m) { return "<span><b>" + m[0] + "</b> " + m[1] + "</span>"; }).join("");
     var weather =
       '<article class="card card--accent weather" data-reveal aria-label="Weather on July 13, 2010">' +
-        '<p class="eyebrow">Arlington, Virginia &middot; 7:15 pm</p>' +
+        '<p class="eyebrow">Arlington, Virginia</p>' +
         '<div class="weather-top">' +
           '<span class="weather-temp"><b data-countup data-from="' + w.low + '" data-to="' + w.high + '" data-fmt="int">' + w.high + '</b>&deg;' +
           '<span class="lo"> / ' + w.low + '&deg; low</span></span>' +
@@ -187,29 +187,14 @@
   }
 
   function renderFullcircle() {
-    var f = D.fullcircle, m = f.match, q = D.moroccoQF;
-    var runStrip = '<p class="eyebrow" data-reveal style="text-align:center">' + f.runLabel + '</p>' +
-      '<div class="run-strip" data-reveal>' + f.run.map(function (x, i) {
-        return '<span class="run-chip" style="--i:' + i + '">' + (x.win ? "<b>" + x.txt + "</b>" : x.txt) + '</span>';
-      }).join("") + '</div>' +
-      '<p class="coda" data-reveal style="margin-top:0;margin-bottom:var(--s6)">' + f.runNote + '</p>';
-    var body = q.played
-      ? '<p class="fixture-when">' + q.result + '</p><p class="fixture-note">' + q.note + '</p>'
-      : '<p class="fixture-when">' + m.dateText + '</p><p class="fixture-tag">' + m.tag + '</p><p class="fixture-note">' + m.upcoming + '</p>';
-    var fixture = '<article class="fixture" data-reveal>' +
-      '<p class="fixture-comp">' + m.comp + '</p>' +
-      '<div class="fixture-teams">' +
-        '<div class="fx-team"><span class="fx-flag">' + flagSVG(m.home) + '</span><span class="fx-name">' + m.home + '</span></div>' +
-        '<span class="fx-vs">' + (q.played ? "FT" : "vs") + '</span>' +
-        '<div class="fx-team"><span class="fx-flag">' + flagSVG(m.away) + '</span><span class="fx-name">' + m.away + '</span></div>' +
-      '</div>' + body + '</article>';
+    var f = D.fullcircle;
     var coda = '<div class="coda-hl" data-reveal><span class="coda-star" aria-hidden="true">🎂</span><p>' + f.coda + '</p></div>';
     var twins = f.twins ? '<div class="twins" data-reveal><p class="twins-label">' + f.twins.label + '</p><div class="twins-grid">' +
       f.twins.people.map(function (p) {
         return '<div class="twin"><span class="twin-emoji" aria-hidden="true">' + p.emoji + '</span>' +
           '<span class="twin-body"><span class="twin-name">' + p.name + '</span><span class="twin-note">' + p.note + '</span></span></div>';
       }).join("") + '</div></div>' : "";
-    set("fullcircle", head("fullcircle", f, runStrip + fixture + coda + twins) + "</div>");
+    set("fullcircle", head("fullcircle", f, coda + twins) + "</div>");
   }
 
   function renderFinale() {
@@ -341,22 +326,6 @@
     Object.keys(navLinks).forEach(function (k) { navIO.observe(el(k)); });
   }
 
-  /* progress bar — CSS drives it where scroll-driven animations exist */
-  var bar = document.querySelector(".progress");
-  var hasSDA = window.CSS && CSS.supports && CSS.supports("animation-timeline: scroll()");
-  if (bar && !hasSDA) {
-    var barQueued = false;
-    function drawBar() {
-      barQueued = false;
-      var max = document.documentElement.scrollHeight - window.innerHeight;
-      bar.style.transform = "scaleY(" + (max > 0 ? Math.min(window.scrollY / max, 1) : 0) + ")";
-    }
-    window.addEventListener("scroll", function () {
-      if (!barQueued) { barQueued = true; requestAnimationFrame(drawBar); }
-    }, { passive: true });
-    drawBar();
-  }
-
   /* ============================================================
      MOTION
      ============================================================ */
@@ -417,7 +386,7 @@
     });
   }
   runOdometer();
-  if (motionOK) setTimeout(function () { launchConfetti(120, 0.9); }, 900);
+  if (motionOK) setTimeout(function () { launchConfetti(200, 1); launchFireworks(2); }, 900);
 
   /* ---------- confetti ---------- */
   var COLORS = ["#FFC93C", "#FF5FA2", "#3AE0FF", "#B983FF", "#B6F36B", "#FF8A3D", "#FF5A5F", "#FFFFFF"];
@@ -436,11 +405,11 @@
       var n = Math.ceil(count / 2);
       for (var i = 0; i < n; i++) {
         var a = (35 + Math.random() * 45) * Math.PI / 180;
-        var sp = (7 + Math.random() * 7) * power;
+        var sp = (8 + Math.random() * 8) * power;
         parts.push({
           x: ox, y: H() * (0.86 + Math.random() * 0.14),
           vx: Math.cos(a) * sp * sign, vy: -Math.sin(a) * sp,
-          w: 6 + Math.random() * 6, h: 8 + Math.random() * 8,
+          w: 10 + Math.random() * 10, h: 13 + Math.random() * 13,
           rot: Math.random() * 6.28, vr: (Math.random() - 0.5) * 0.4,
           color: COLORS[(Math.random() * COLORS.length) | 0]
         });
@@ -469,11 +438,73 @@
     requestAnimationFrame(tick);
   }
 
+  /* ---------- fireworks ---------- */
+  function launchFireworks(shells) {
+    if (!motionOK) return;
+    shells = shells || 2;
+    var canvas = document.createElement("canvas");
+    canvas.className = "confetti-canvas";
+    document.body.appendChild(canvas);
+    var ctx = canvas.getContext("2d");
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    function W() { return window.innerWidth; } function H() { return window.innerHeight; }
+    canvas.width = W() * dpr; canvas.height = H() * dpr;
+    var rockets = [], sparks = [];
+    for (var s = 0; s < shells; s++) {
+      rockets.push({
+        x: W() * (0.18 + Math.random() * 0.64), y: H(),
+        vx: (Math.random() - 0.5) * 1.4, vy: -(10 + Math.random() * 3),
+        targetY: H() * (0.16 + Math.random() * 0.24),
+        color: COLORS[(Math.random() * COLORS.length) | 0], delay: s * 320
+      });
+    }
+    function burst(x, y, color) {
+      var n = 52 + (Math.random() * 28 | 0);
+      for (var i = 0; i < n; i++) {
+        var a = (i / n) * 6.283 + Math.random() * 0.25, sp = 2.4 + Math.random() * 4.6;
+        sparks.push({ x: x, y: y, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp,
+          color: color, life: 1, decay: 0.008 + Math.random() * 0.011, size: 1.8 + Math.random() * 2.2 });
+      }
+    }
+    var last = performance.now(), t0 = last, g = 0.13, drag = 0.986;
+    function tick(now) {
+      var dt = Math.min((now - last) / 16.67, 2); last = now;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.save(); ctx.scale(dpr, dpr);
+      for (var i = rockets.length - 1; i >= 0; i--) {
+        var r = rockets[i];
+        if (now - t0 < r.delay) continue;
+        r.vy += g * dt * 0.5; r.x += r.vx * dt; r.y += r.vy * dt;
+        ctx.globalAlpha = 1; ctx.fillStyle = r.color;
+        ctx.beginPath(); ctx.arc(r.x, r.y, 2.4, 0, 6.283); ctx.fill();
+        if (r.y <= r.targetY || r.vy >= 0) { burst(r.x, r.y, r.color); rockets.splice(i, 1); }
+      }
+      ctx.globalCompositeOperation = "lighter";
+      var alive = 0;
+      for (var j = 0; j < sparks.length; j++) {
+        var p = sparks[j];
+        if (p.life <= 0) continue;
+        p.vy += g * dt; p.vx *= Math.pow(drag, dt); p.vy *= Math.pow(drag, dt);
+        p.x += p.vx * dt; p.y += p.vy * dt; p.life -= p.decay * dt;
+        if (p.life > 0) {
+          alive++;
+          ctx.globalAlpha = p.life; ctx.fillStyle = p.color;
+          ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, 6.283); ctx.fill();
+        }
+      }
+      ctx.globalCompositeOperation = "source-over";
+      ctx.restore();
+      if ((rockets.length > 0 || alive > 0) && now - t0 < 7500) requestAnimationFrame(tick);
+      else canvas.remove();
+    }
+    requestAnimationFrame(tick);
+  }
+
   /* confetti when the finale message appears */
   var msg = document.querySelector(".finale-message");
   if (motionOK && msg) {
     var mio = new IntersectionObserver(function (ents) {
-      ents.forEach(function (e) { if (e.isIntersecting) { mio.disconnect(); launchConfetti(160, 1); } });
+      ents.forEach(function (e) { if (e.isIntersecting) { mio.disconnect(); launchConfetti(260, 1.1); launchFireworks(2); } });
     }, { threshold: 0.6 });
     mio.observe(msg);
   }
@@ -499,7 +530,7 @@
       var cc = el("cake-count");
       if (window._taps >= 16) {
         window._taps = 0;
-        launchConfetti(340, 1.3);
+        launchConfetti(520, 1.35); launchFireworks(3);
         showToast(D.finale.eggToast);
         if (cc) cc.textContent = D.finale.cakeHint;
       } else if (cc) {
